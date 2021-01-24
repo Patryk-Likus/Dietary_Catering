@@ -9,5 +9,5 @@ public class DietaryCateringApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(DietaryCateringApplication.class, args);
 	}
-
+//Komentarz Lukasza-test
 }
