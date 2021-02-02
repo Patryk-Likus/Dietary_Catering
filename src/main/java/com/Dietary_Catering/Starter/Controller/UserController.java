@@ -15,12 +15,12 @@ public class UserController {
 @Autowired
 UserService userService;
 
-    Person person = new Person("Jan", "Nowak","nowakwp.pl","798567465", "polska", "bydgoszcz", "87-000", "12345");
+    //Person person = new Person("Jan", "Nowak","nowakwp.pl","798567465", "polska", "bydgoszcz", "87-000", "12345");
 
     @RequestMapping
     public String mainPage(Model model){
-        userService.createPerson(person);
-        return "index";
+        //userService.createPerson(person); po odswiezeniu strony dodaje uzytkownika person do bazy danych ( docelowo tutaj mamy przekazywać wartość z pola przy rejestracji)
+        return "main";
     }
 
     /*@RequestMapping(value = "/rejestracja", method = RequestMethod.POST)
