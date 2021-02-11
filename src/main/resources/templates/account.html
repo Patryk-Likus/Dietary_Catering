@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Logowanie</title>
+    <link rel="stylesheet" th:href="style.css"/>
+</head>
+<body>
+
+<div class="container">
+    <div class="top">
+            <span class="span-top">
+          <img class="img-top" th:src="@{'/images/free.png'}"><label class="top-label">Darmowa dostawa</label>
+          <img class="img-top" th:src="@{'/images/calendar.png'}"><label
+                    class="top-label">Natychmiastowa realizacja</label>
+          <img class="img-top" th:src="@{'/images/car.png'}"><label class="top-label">Dowóz autochłodniami</label>
+        </span>
+    </div>
+    <div class="section">
+
+        <div class="header">
+        </div>
+        <div class="form-login">
+            <label class="login">Zaloguj się</label><br><br>
+            <form action="#" th:action="@{/account}" method="post">
+                <label>Email</label>
+                <input type="text" th:field="${person.email}"><br><br>
+                <label>Hasło</label>
+                <input type="text" th:field="${person.password}"><br>
+                <br><input type="submit" value="zaloguj się">
+            </form>
+            <a th:href="${'/registry'}">"Załóż konto"</a>
+        </div>
+
+    </div>
+</div>
+
+</body>
+</html>

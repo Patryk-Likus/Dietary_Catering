@@ -18,7 +18,7 @@ public class Person {
     private String surname;
 
     @Column
-    private String email;
+    public String email;
 
 
     @Column
@@ -34,7 +34,7 @@ public class Person {
     private String postCode;
 
     @Column
-    private String password;
+    public String password;
 
 
     public Person() {

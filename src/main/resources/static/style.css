@@ -43,7 +43,7 @@
 
   .section{
    height: 95%;
-    background-image: url("../images/background.png");
+   background-image: url("../images/background.png");
     background-size: 100% 100%;
  
   }
@@ -66,10 +66,32 @@
      margin-right: auto;
   }
 
-.header a:hover{
-    
+  .header a:hover{
+
     font-size: 30px;
     font-weight: bolder;
   }
-  
-  
+
+
+  .form-login{
+    display: inline-block;
+    float: left;
+    justify-content: center;
+    margin-left: 42%;
+
+  }
+
+.login{
+        background-color: blue;
+         text-align: center;
+         justify-content: center;
+        padding: 5px 30px;
+       }
+
+.form-registry{
+           display: inline-block;
+           float: left;
+           justify-content: center;
+           margin-left: 42%;
+
+         }
