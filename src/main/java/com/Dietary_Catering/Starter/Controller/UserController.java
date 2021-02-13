@@ -66,7 +66,7 @@ UserService userService;
         return "redirect:/account";
     }
 
-<<<<<<< HEAD
+
     @GetMapping("/kontakt")
     public String KontaktForm(Model model){
         model.addAttribute("contact", new ContactForm());
@@ -80,13 +80,13 @@ UserService userService;
 
     }
 
-=======
+
     @GetMapping("/admin")
     public String adminPage(){
 
         return "admin";
     }
->>>>>>> bdb4f47... Spring security - admin panels
+
     /*@RequestMapping(value = "/rejestracja", method = RequestMethod.POST)
     public String saveUser(@Valid User user, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
