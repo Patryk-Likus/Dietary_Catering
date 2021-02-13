@@ -1,0 +1,4 @@
+-------------------------------------------------------------------------------
+Test set: com.Dietary_Catering.Starter.DietaryCateringApplicationTests
+-------------------------------------------------------------------------------
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 3.827 s - in com.Dietary_Catering.Starter.DietaryCateringApplicationTests

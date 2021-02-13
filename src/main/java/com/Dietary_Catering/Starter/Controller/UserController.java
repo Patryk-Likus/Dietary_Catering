@@ -39,6 +39,11 @@ UserService userService;
         return "diets";
     }
 
+    @GetMapping("/price-list")
+    public String priceList(Model model){
+        return "price-list";
+    }
+
     @GetMapping("/account")
     public String agd(Model model){
         model.addAttribute("person", new Person());
