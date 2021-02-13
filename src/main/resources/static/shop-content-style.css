@@ -1,0 +1,66 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+.shop-container {
+    padding: 2vh 20vw 2vh;
+    display: flex;
+    flex-wrap: wrap;
+    position: center;
+}
+
+.shopContent {
+    margin: 0 auto;
+
+    border: blue solid;
+    margin: 4vw;
+    align-content: center;
+
+}
+.shopContent span {
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 10vw;
+}
+
+.shopContentImg {
+    width: 10vw;
+    height: auto;
+}
+
+
+/* === POPUP === */
+
+.tooltip {
+    position: relative;
+    display: inline-block;
+    border-bottom: 1px dotted black;
+}
+
+.tooltip .tooltiptext {
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
+
+    opacity: 0;
+    transition: opacity 0.5s;
+
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1;
+    top: 100%;
+    left: 50%;
+    margin-left: -60px;
+}
+
+.tooltip:hover .tooltiptext {
+    visibility: visible;
+    opacity: 1;
+}
