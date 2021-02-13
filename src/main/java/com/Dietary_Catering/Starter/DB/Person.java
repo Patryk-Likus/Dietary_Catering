@@ -18,7 +18,7 @@ public class Person {
     private String surname;
 
     @Column
-    public String email;
+    private String email;
 
 
     @Column
@@ -34,13 +34,16 @@ public class Person {
     private String postCode;
 
     @Column
-    public String password;
+    private String login;
+
+    @Column
+    private String password;
 
 
     public Person() {
     }
 
-    public Person(String name, String surname, String email, String phoneNumber, String streetAndNumber, String city, String postCode, String password) {
+    public Person(String name, String surname, String email, String phoneNumber, String streetAndNumber, String city, String postCode,String login ,String password) {
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -48,6 +51,7 @@ public class Person {
         this.streetAndNumber = streetAndNumber;
         this.city = city;
         this.postCode = postCode;
+        this.login = login;
         this.password = password;
     }
 
@@ -109,6 +113,14 @@ public class Person {
         this.postCode = postCode;
     }
 
+    public String getLogin() {
+        return login;
+    }
+
+    public void setLogin(String login) {
+        this.login = login;
+    }
+
     public String getPassword() {
         return password;
     }
@@ -121,6 +133,6 @@ public class Person {
     public String toString() {
         return "User{" + "id=" + id + ", name='" + name + '\'' + ", surname='" + surname + '\'' + ", email='" + email + '\'' +
                 ", phoneNumber='" + phoneNumber + '\'' + ", streetAndNumber='" + streetAndNumber + '\'' + ", city='" + city + '\'' + ", " +
-                "postCode='" + postCode + '\'' + ", password='" + password + '\'' + '}';
+                "postCode='" + postCode + '\'' + ", login='" + login + '\''  + ", password='" + password + '\'' + '}';
     }
 }
