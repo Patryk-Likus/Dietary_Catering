@@ -1,6 +1,7 @@
 package com.Dietary_Catering.Starter.DB;
 
 import javax.persistence.*;
+import javax.validation.constraints.Email;
 
 
 @Entity
@@ -9,6 +10,7 @@ public class Person {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
+
 
     @Column
     private String name;

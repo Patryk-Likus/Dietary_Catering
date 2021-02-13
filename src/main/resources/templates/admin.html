@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Dietary Catering</title>
+    <link rel="stylesheet" th:href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <div class="top">
+            <span class="span-top">admin</span>
+    </div>
+    <div class="section">
+
+        <div class="header">
+            <a href="index" target="blank">Strona Główna</a><a
+                href="diety.html" target="blank">Diety</a><a
+                href="cennik.html" target="blank" >Cennik</a><a
+                href="kontakt.html" target="blank">Kontakt</a><a
+                href="account" target="blank">Logowanie</a>
+        </div>
+        <div class="row">
+            <form action="#" th:action="@{/logout}" method="post">
+                <input type="submit" value="Logout" />
+            </form>
+        </div>
+
+
+    </div>
+</div>
+
+</body>
+</html>

@@ -8,10 +8,7 @@ import com.Dietary_Catering.Starter.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.*;
 
 
 @Controller
@@ -69,6 +66,7 @@ UserService userService;
         return "redirect:/account";
     }
 
+<<<<<<< HEAD
     @GetMapping("/kontakt")
     public String KontaktForm(Model model){
         model.addAttribute("contact", new ContactForm());
@@ -82,6 +80,13 @@ UserService userService;
 
     }
 
+=======
+    @GetMapping("/admin")
+    public String adminPage(){
+
+        return "admin";
+    }
+>>>>>>> bdb4f47... Spring security - admin panels
     /*@RequestMapping(value = "/rejestracja", method = RequestMethod.POST)
     public String saveUser(@Valid User user, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
