@@ -1,6 +1,7 @@
 package com.Dietary_Catering.Starter.Controller;
 
 
+import com.Dietary_Catering.Starter.DB.ContactForm;
 import com.Dietary_Catering.Starter.DB.Person;
 import com.Dietary_Catering.Starter.Factory.FoodFactory;
 import com.Dietary_Catering.Starter.Services.UserService;
@@ -21,14 +22,14 @@ UserService userService;
 
 
     @RequestMapping
-    public String mainPage(Model model){
+    public String mainPage(){
 
         //userService.createPerson(person);// po odswiezeniu strony dodaje uzytkownika person do bazy danych ( docelowo tutaj mamy przekazywać wartość z pola przy rejestracji)
         return "index";
     }
 
     @GetMapping("/index")
-    public String index(Model model){
+    public String index(){
         return "index";
     }
 
@@ -67,6 +68,20 @@ UserService userService;
 
         return "redirect:/account";
     }
+
+    @GetMapping("/kontakt")
+    public String KontaktForm(Model model){
+        model.addAttribute("contact", new ContactForm());
+        return "kontakt";
+    }
+
+    @PostMapping("/kontakt")
+    public String WyslijKontakt(@ModelAttribute ContactForm contactForm){
+        System.out.println(contactForm);
+        return "index";
+
+    }
+
     /*@RequestMapping(value = "/rejestracja", method = RequestMethod.POST)
     public String saveUser(@Valid User user, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
