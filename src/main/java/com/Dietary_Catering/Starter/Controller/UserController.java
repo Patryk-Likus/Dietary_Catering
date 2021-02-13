@@ -2,6 +2,7 @@ package com.Dietary_Catering.Starter.Controller;
 
 
 import com.Dietary_Catering.Starter.DB.Person;
+import com.Dietary_Catering.Starter.Factory.FoodFactory;
 import com.Dietary_Catering.Starter.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -24,7 +25,18 @@ UserService userService;
     public String mainPage(Model model){
 
         //userService.createPerson(person);// po odswiezeniu strony dodaje uzytkownika person do bazy danych ( docelowo tutaj mamy przekazywać wartość z pola przy rejestracji)
-        return "main";
+        return "index";
+    }
+
+    @GetMapping("/index")
+    public String index(Model model){
+        return "index";
+    }
+
+    @GetMapping("/diets")
+    public String dietsPage(Model model){
+        model.addAttribute("foodList", FoodFactory.getFoodList());
+        return "diets";
     }
 
     @GetMapping("/account")
@@ -39,7 +51,7 @@ UserService userService;
         System.out.println("email: " + person.getEmail() + " " + person.getPassword());
         if(person.getEmail().equalsIgnoreCase("jan"))
             return "redirect:/account";
-        return "main";
+        return "index";
     }
 
     @GetMapping("/registry")

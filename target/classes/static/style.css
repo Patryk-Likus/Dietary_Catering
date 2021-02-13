@@ -1,0 +1,97 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Fira Sans', sans-serif;
+}
+
+.container{
+    width: 100vw;
+    height: 100vh;
+    
+  }
+
+  .top {
+    width:100vw;
+    height: 5vh;
+    display: flex;
+    background-color: white;
+
+  }
+  .top-label{
+    color: black;
+    font-family: Arial;
+    font-size: 18px;
+   margin-top: auto;
+   margin-bottom: auto;
+   margin-right: 10%;
+   
+    
+  }
+.span-top{
+  display: flex;
+  justify-content: center;
+  width: 70vw;
+  float: left;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+  .img-top{
+    margin-left: 5%;
+    
+  }
+
+  .section{
+   height: 95%;
+   background-image: url("../images/background.png");
+    background-size: 100% 100%;
+ 
+  }
+  .header{
+    width: 95%;
+    padding: 30px;
+    display: flex;
+    justify-content: center;
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .header a{
+    margin-left: 5%;
+    font-size: 25px;
+     width: 25%;
+     color: rgb(0, 0, 0);
+     text-decoration: none;
+     text-align: center;
+     margin-left: auto;
+     margin-right: auto;
+  }
+
+  .header a:hover{
+
+    font-size: 30px;
+    font-weight: bolder;
+  }
+
+
+  .form-login{
+    display: inline-block;
+    float: left;
+    justify-content: center;
+    margin-left: 42%;
+
+  }
+
+.login{
+        background-color: blue;
+         text-align: center;
+         justify-content: center;
+        padding: 5px 30px;
+       }
+
+.form-registry{
+           display: inline-block;
+           float: left;
+           justify-content: center;
+           margin-left: 42%;
+
+         }
