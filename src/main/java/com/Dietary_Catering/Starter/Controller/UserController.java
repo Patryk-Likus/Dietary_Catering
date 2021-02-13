@@ -19,7 +19,6 @@ public class UserController {
 @Autowired
 UserService userService;
 
-    //Person person = new Person("Jan", "Nowak","nowakwp.pl","798567465", "polska", "bydgoszcz", "87-000", "12345");
 
     @RequestMapping
     public String mainPage(Model model){
@@ -63,12 +62,10 @@ UserService userService;
 
     @PostMapping("/registry")
     public String createPerson(@ModelAttribute Person person){
-        System.out.println("imię: "  + person.getName() + " " + person.getSurname());
-        if(person.getName().equalsIgnoreCase("Pat")){
-            return "account";
-        }
-        else
-            return "redirect:/registry";
+        System.out.println(person);
+        userService.createPerson(person);
+
+        return "redirect:/account";
     }
     /*@RequestMapping(value = "/rejestracja", method = RequestMethod.POST)
     public String saveUser(@Valid User user, BindingResult bindingResult){
