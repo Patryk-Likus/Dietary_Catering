@@ -16,6 +16,13 @@ public class FoodFactory {
         foodList.add(new Food("sport","Sport",30, "Tu Będzie opis wybranej diety. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, perferendis!"));
         foodList.add(new Food("vege","Vege",30, "Tu Będzie opis wybranej diety. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, perferendis!"));
         foodList.add(new Food("vegefish","Vege + Ryba",30, "Tu Będzie opis wybranej diety. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, perferendis!"));
+        foodList.add(new Food("glutenlactosefree","Bez Glutenu i Laktozy", 40, "lorem4"));
+        foodList.add(new Food("lowIG","LOW IG", 40, "lorem4"));
+        foodList.add(new Food("junior","Dla Najmłodszych", 40, "lorem4"));
+        foodList.add(new Food("soft","Soft", 40, "lorem4"));
+        foodList.add(new Food("lesscarb","Less Carb", 40, "Tu Będzie opis wybranej diety. Lorem ipsum dolor sit amet, consectetur adipisicing elit. Doloremque, perferendis!"));
+
+
 
 
 

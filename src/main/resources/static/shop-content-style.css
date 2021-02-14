@@ -5,31 +5,77 @@
     font-family: 'Poppins', sans-serif;
 }
 
+.shop-headline {
+    margin-top: 4vh;
+    margin-right: 15vw;
+    margin-left: 15vw;
+    margin-bottom: 12vh;
+
+    padding-top: 6vh;
+    text-align: center;
+    border-top: solid #9b9b9b 1px;
+}
+
 .shop-container {
-    padding: 2vh 20vw 2vh;
     display: flex;
     flex-wrap: wrap;
-    position: center;
+    align-content: center;
+    justify-content: center;
+    margin: 0 auto;
+    padding: 0 10vw;
+}
+
+
+.shopContent-outer {
+    display: block;
+    margin: 5vh 4vw;
+    position: relative;
+
 }
 
 .shopContent {
-    margin: 0 auto;
-
-    border: blue solid;
-    margin: 4vw;
-    align-content: center;
+    width: 14vw;
+    height: 13vw;
+    border: 5px solid #009D80;
+    padding: 0.4vw;
+    text-align: center;
+    margin-bottom: 6vh;
+    padding-top: 23%;
 
 }
-.shopContent span {
-    display: flex;
-    flex-wrap: wrap;
-    max-width: 10vw;
+
+.shopContentName {
+    display: inline-block;
+    text-align: center;
+    position: relative;
+    font-size: 1.25rem;
+    font-weight: bold;
 }
 
 .shopContentImg {
-    width: 10vw;
+    width: 12vw;
     height: auto;
+    position: absolute; /* pozycjonuje obrazek */
+    top: -40%;
+    left: -20%;
 }
+
+
+.button-shopContent {
+    background-color: #4CAF50;
+    color: white;
+    padding: 12px 20px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.button-shopContent:hover {
+    background-color: #45a049;
+    transition: all 0.2s ease 0s;
+}
+
+
 
 
 /* === POPUP === */
@@ -64,3 +110,4 @@
     visibility: visible;
     opacity: 1;
 }
+

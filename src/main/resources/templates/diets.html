@@ -8,60 +8,72 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<div class="top-bar">
-    <div class="div-top-bar">
-        <img class="img-top" th:src="@{'/images/free.png'}">
-        <label class="top-label">Darmowa dostawa</label>
-    </div>
-    <div class="div-top-bar">
-        <img class="img-top" th:src="@{'/images/calendar.png'}">
-        <label class="top-label">Natychmiastowa realizacja</label>
-    </div>
-    <div class="div-top-bar">
-        <img class="img-top" th:src="@{'/images/car.png'}">
-        <label class="top-label">Dowóz autochłodniami</label>
-    </div>
-
-</div>
-
-<nav class="nav-bar">
-
-    <ul class="nav-links">
-        <!--        <li><a href="index" target="blank">Strona Główna</a></li>-->
-        <li><a href="diets" target="blank">Diety</a></li>
-        <li><a href="price-list" target="blank">Cennik</a></li>
-    </ul>
-    <a href="index" target="blank"><img src="images/logo.png" alt="Logo" class="logo-img"></a>
-    <ul class="nav-links">
-        <li><a href="kontakt" target="blank">Kontakt</a></li>
-        <li><a href="account" target="blank">Logowanie</a></li>
-    </ul>
-</nav>
-
-
-<div class="shop-container">
-
-    <div th:each="food : ${foodList}" class="shopContent">
-
-
-        <img th:src="'images/food_img/' + ${food.getImgLink()}" alt="brak zdjęcia" class="shopContentImg">
-        <span th:text="'Dieta '+ ${food.getNameDisplay()}" class="shopContentName"></span><br>
-
-        <div class="tooltip">Więcej info
-            <span th:text="${food.getDescription()}" class="tooltiptext"></span>
+<header>
+    <div class="top-bar">
+        <div class="div-top-bar">
+            <img class="img-top" th:src="@{'/images/free.png'}">
+            <label class="top-label">Darmowa dostawa</label>
         </div>
-
-
-        <p th:text="${food.getPrice()} + ' zł'"></p><br>
-        <button>Dodaj do koszyka</button>
-
+        <div class="div-top-bar">
+            <img class="img-top" th:src="@{'/images/calendar.png'}">
+            <label class="top-label">Natychmiastowa realizacja</label>
+        </div>
+        <div class="div-top-bar">
+            <img class="img-top" th:src="@{'/images/car.png'}">
+            <label class="top-label">Dowóz autochłodniami</label>
+        </div>
     </div>
+    <nav class="nav-bar">
+        <ul class="nav-links">
+            <!--        <li><a href="index" target="blank">Strona Główna</a></li>-->
+            <li><a href="diets" target="blank">Diety</a></li>
+            <li><a href="price-list" target="blank">Cennik</a></li>
+        </ul>
+        <a href="index" target="blank"><img src="images/logo.png" alt="Logo" class="logo-img"></a>
+        <ul class="nav-links">
+            <li><a href="kontakt" target="blank">Kontakt</a></li>
+            <li><a href="account" target="blank">Logowanie</a></li>
+        </ul>
+    </nav>
+</header>
 
+<main>
+    <div class="shop-headline">
+        <h2>Poznaj nasze diety!</h2>
+    </div>
+    <div class="shop-container">
+        <div th:each="food : ${foodList}" class="shopContent-outer">
+            <img th:src="'images/food_img/' + ${food.getImgLink()}" alt="brak zdjęcia" class="shopContentImg">
+            <div class="shopContent">
+                <span th:text="'Dieta '+ ${food.getNameDisplay()}" class="shopContentName"></span><br>
+                <div class="tooltip">Więcej info
+                    <span th:text="${food.getDescription()}" class="tooltiptext"></span>
+                </div>
+                <p th:text="${food.getPrice()} + ' zł'"></p><br>
+                <button class="button-shopContent">Zamów</button>
+            </div>
+        </div>
+    </div>
+</main>
 
-</div>
+<footer>
+    <div class="footer-outer">
+        <div class="payment-methods">
+            <h3>Metody płatności</h3>
+            <ul class="payment-list">
+                <il><img class="payment-item" src="/images/payment-methods/Przelewy2440.png" alt="przelewy"></il>
+                <li><img class="payment-item" src="/images/payment-methods/blik.png" alt="przelewy"></li>
+                <li><img class="payment-item" src="/images/payment-methods/mastercard.png" alt="przelewy"></li>
+                <li><img class="payment-item" src="/images/payment-methods/maestro.png" alt="przelewy"></li>
+                <li><img class="payment-item" src="/images/payment-methods/visa.png" alt="przelewy"></li>
+                <li><img class="payment-item" src="/images/payment-methods/electron-40.png" alt="przelewy"></li>
+                <li><img class="payment-item" src="/images/payment-methods/3dsec.png" alt="przelewy"></li>
+                <li><img class="payment-item" src="/images/payment-methods/bnpparibas.png" alt="przelewy"></li>
+            </ul>
 
-
+        </div>
+    </div>
+</footer>
 </body>
 </html>
 

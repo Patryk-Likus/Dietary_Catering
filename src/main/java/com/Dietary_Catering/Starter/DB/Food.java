@@ -3,7 +3,8 @@ package com.Dietary_Catering.Starter.DB;
 
 public class Food {
 
-    private static int idx = 1;
+    private static int count = 1;
+    private int idx;
     private String name;
     private String imgLink;
     private String nameDisplay;
@@ -17,14 +18,16 @@ public class Food {
         this.nameDisplay = nameDisplay;
         this.price = price;
         this.description = description;
+        this.idx = count;
+        count++;
     }
 
-    public static int getIdx() {
+    public int getIdx() {
         return idx;
     }
 
-    public static void setIdx(int idx) {
-        Food.idx = idx;
+    public void setIdx(int idx) {
+        this.idx = idx;
     }
 
     public String getName() {
