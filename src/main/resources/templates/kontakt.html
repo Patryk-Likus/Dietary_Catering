@@ -38,8 +38,22 @@
         <li><a href="account" target="blank">Logowanie</a></li>
     </ul>
 </nav>
+<div class="oddzial">
+NASZE ODDZIAŁY:
+    <div class="miasto"> TORUN </div>
+    <div> T: +48 555-555-555, <br>
+        E: <a href="kontakt@catering.pl" class="link">kontakt@catering.pl</a>
+    </div> <br>
+
+    <div class="miasto"> Lublin </div>
+    <div> T: +48 323-321-431, <br>
+        E: <a href="kontakt2@catering.pl" class="link">kontakt2@catering.pl</a>
+    </div>
+
+</div>
 
 <div class="form-registry">
+    <br>
     <label class="login">Kontakt</label><br><br>
     <form action="#" th:action="@{/kontakt}" method="post">
         <label>Imię</label>
@@ -49,7 +63,8 @@
         <label>Email</label>
         <input type="text" th:field="${contact.email}"><br>
         <label>Wiadomość</label>
-        <input type="text" th:field="${contact.message}"><br>
+        <textarea th:field="${contact.message}" id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+        <br>
 
         <br><input type="submit" value="Wyślij">
     </form>
