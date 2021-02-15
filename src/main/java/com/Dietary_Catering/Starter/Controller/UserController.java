@@ -44,7 +44,7 @@ UserService userService;
     @GetMapping("/account")
     public String agd(Model model){
         model.addAttribute("person", new Person());
-        //model.addAttribute("productList", FactoryProduct.getProductList());
+//        model.addAttribute("productList", FactoryProduct.getProductList());
         return "account";
     }
 
@@ -87,8 +87,8 @@ UserService userService;
 
 
     @GetMapping("/admin")
-    public String adminPage(){
-
+    public String adminPage(Model model){
+        model.addAttribute("foodList", FoodFactory.getFoodList());
         return "admin";
     }
 
