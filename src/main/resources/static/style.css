@@ -7,6 +7,10 @@
 
 /* === NAV BAR === */
 
+body {
+    background-color: #fffaeb;
+}
+
 .top-bar {
     height: 5vh;
     display: flex;
@@ -43,6 +47,7 @@
     padding-left: 15vw;
     padding-right: 15vw;
     padding-top: 3vh;
+    background-color: white;
 }
 
 .nav-bar img {
@@ -69,7 +74,9 @@
     transition: all 0.2s ease 0s;
     /*font-weight: bolder;*/
 }
-
+main{
+    border-top: solid #9b9b9b 1px;
+}
 
 /* === FORMS === */
 

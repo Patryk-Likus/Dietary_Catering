@@ -8,70 +8,79 @@
 </head>
 <body>
 
+<header>
 
-<div class="top-bar">
-    <div class="div-top-bar">
-        <img class="img-top" th:src="@{'/images/free.png'}">
-        <label class="top-label">Darmowa dostawa</label>
-    </div>
-    <div class="div-top-bar">
-        <img class="img-top" th:src="@{'/images/calendar.png'}">
-        <label class="top-label">Natychmiastowa realizacja</label>
-    </div>
-    <div class="div-top-bar">
-        <img class="img-top" th:src="@{'/images/car.png'}">
-        <label class="top-label">Dowóz autochłodniami</label>
-    </div>
+    <div class="top-bar">
+        <div class="div-top-bar">
+            <img class="img-top" th:src="@{'/images/free.png'}">
+            <label class="top-label">Darmowa dostawa</label>
+        </div>
+        <div class="div-top-bar">
+            <img class="img-top" th:src="@{'/images/calendar.png'}">
+            <label class="top-label">Natychmiastowa realizacja</label>
+        </div>
+        <div class="div-top-bar">
+            <img class="img-top" th:src="@{'/images/car.png'}">
+            <label class="top-label">Dowóz autochłodniami</label>
+        </div>
 
-</div>
-
-<nav class="nav-bar">
-
-    <ul class="nav-links">
-        <!--        <li><a href="index" target="blank">Strona Główna</a></li>-->
-        <li><a href="diets" target="blank">Diety</a></li>
-        <li><a href="price-list" target="blank">Cennik</a></li>
-    </ul>
-    <a href="index" target="blank"><img src="images/logo.png" alt="Logo" class="logo-img"></a>
-    <ul class="nav-links">
-        <li><a href="kontakt" target="blank">Kontakt</a></li>
-        <li><a href="account" target="blank">Logowanie</a></li>
-    </ul>
-</nav>
-<div class="oddzial">
-NASZE ODDZIAŁY:
-    <div class="miasto"> TORUN </div>
-    <div> T: +48 555-555-555, <br>
-        E: <a href="kontakt@catering.pl" class="link">kontakt@catering.pl</a>
-    </div> <br>
-
-    <div class="miasto"> Lublin </div>
-    <div> T: +48 323-321-431, <br>
-        E: <a href="kontakt2@catering.pl" class="link">kontakt2@catering.pl</a>
     </div>
 
-</div>
+    <nav class="nav-bar">
 
-<div class="form-registry">
-    <br>
-    <label class="login">Kontakt</label><br><br>
-    <form action="#" th:action="@{/kontakt}" method="post">
-        <label>Imię</label>
-        <input type="text" th:field="${contact.name}"><br><br>
-        <label>Nazwisko</label>
-        <input type="text" th:field="${contact.surname}"><br>
-        <label>Email</label>
-        <input type="text" th:field="${contact.email}"><br>
-        <label>Wiadomość</label>
-        <textarea th:field="${contact.message}" id="subject" name="subject" placeholder="Write something.." style="height:200px"></textarea>
+        <ul class="nav-links">
+            <!--        <li><a href="index" target="blank">Strona Główna</a></li>-->
+            <li><a href="diets" target="blank">Diety</a></li>
+            <li><a href="price-list" target="blank">Cennik</a></li>
+        </ul>
+        <a href="index" target="blank"><img src="images/logo.png" alt="Logo" class="logo-img"></a>
+        <ul class="nav-links">
+            <li><a href="kontakt" target="blank">Kontakt</a></li>
+            <li><a href="account" target="blank">Logowanie</a></li>
+        </ul>
+    </nav>
+
+
+</header>
+<main>
+    <div class="oddzial">
+        NASZE ODDZIAŁY:
+        <div class="miasto"> TORUN</div>
+        <div> T: +48 555-555-555, <br>
+            E: <a href="kontakt@catering.pl" class="link">kontakt@catering.pl</a>
+        </div>
         <br>
 
-        <br><input type="submit" value="Wyślij">
-    </form>
-</div>
+        <div class="miasto"> Lublin</div>
+        <div> T: +48 323-321-431, <br>
+            E: <a href="kontakt2@catering.pl" class="link">kontakt2@catering.pl</a>
+        </div>
 
-</div>
-</div>
+    </div>
+
+    <div class="form-registry">
+        <br>
+        <label class="login">Kontakt</label><br><br>
+        <form action="#" th:action="@{/kontakt}" method="post">
+            <label>Imię</label>
+            <input type="text" th:field="${contact.name}"><br><br>
+            <label>Nazwisko</label>
+            <input type="text" th:field="${contact.surname}"><br>
+            <label>Email</label>
+            <input type="text" th:field="${contact.email}"><br>
+            <label>Wiadomość</label>
+            <textarea th:field="${contact.message}" id="subject" name="subject" placeholder="Write something.."
+                      style="height:200px"></textarea>
+            <br>
+
+            <br><input type="submit" value="Wyślij">
+        </form>
+    </div>
+</main>
+<footer>
+
+</footer>
+
 
 </body>
 </html>

@@ -45,7 +45,8 @@
         <div th:each="food : ${foodList}" class="shopContent-outer">
             <img th:src="'images/food_img/' + ${food.getImgLink()}" alt="brak zdjęcia" class="shopContentImg">
             <div class="shopContent">
-                <span th:text="'Dieta '+ ${food.getNameDisplay()}" class="shopContentName"></span><br>
+                <span class="shopContentName">Dieta</span><br>
+                <span th:text="${food.getNameDisplay()}" class="shopContentName"></span><br>
                 <div class="tooltip">Więcej info
                     <span th:text="${food.getDescription()}" class="tooltiptext"></span>
                 </div>
@@ -72,6 +73,7 @@
             </ul>
 
         </div>
+
     </div>
 </footer>
 </body>
