@@ -9,6 +9,7 @@
 
 body {
     background-color: #fffaeb;
+    display: block;
 }
 
 .top-bar {
@@ -76,6 +77,8 @@ body {
 }
 main{
     border-top: solid #9b9b9b 1px;
+    min-height: 100%;
+
 }
 
 /* === FORMS === */
@@ -155,26 +158,78 @@ input[type=submit]:hover {
 
 /* === FOOTER === */
 
-.footer-outer {
-    background-color: #4CAF50;
+.footer-core {
     width: 100%;
-    min-height: 7vh;
+    /*position: absolute;*/
+    /*bottom: 0;*/
+    /*border: black solid 1px;*/
+}
+
+.footer-outer {
+    border-top: #9b9b9b solid 1px;
+    width: 100%;
+    padding: 14px 20vw;
+}
+.footer-content {
+    display: flex;
+    justify-content: space-around;
+}
+
+
+.footer-title {
+    margin-bottom: 3vh;
 }
 
 .payment-methods {
-    background-color: #cccccc;
-    width: 20%;
+    width: 29rem;
+    padding: 20px;
 }
+
+.footer-links-list {
+    list-style: none;
+}
+
+.footer-links-list a {
+    text-decoration: none;
+    color: black;
+}
+
+.footer-links-list a:hover {
+    color: #009D80;
+    text-decoration: underline;
+    transition: all 0.2s ease 0s;
+}
+
 
 .payment-list {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    margin: 10%;
+    /*margin: 20px;*/
 }
 
 .payment-item {
-    padding: 6px;
+    background-color: white;
+    padding: 3px;
+    min-width: 80px;
+    justify-content: space-around;
+    align-items: center;
     height: 40px;
-    border: red solid 1px;
+    border: #cccccc solid 1px;
+    margin: 0.2rem;
+}
+.payment-item img {
+    height: 100%;
+    margin-left: auto;
+    margin-right: auto;
+    display: block;
+}
+.copyright-footer {
+    text-align: center;
+    font-size: 0.7rem;
+}
+
+.copyright-footer span{
+    font-style: italic;
+    font-weight: bold;
 }

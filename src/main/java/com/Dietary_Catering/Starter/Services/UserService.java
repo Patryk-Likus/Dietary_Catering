@@ -1,5 +1,6 @@
 package com.Dietary_Catering.Starter.Services;
 
+import com.Dietary_Catering.Starter.DB.Food;
 import com.Dietary_Catering.Starter.DB.Person;
 import com.Dietary_Catering.Starter.DB.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,6 +24,10 @@ public class UserService {
 
     public List<Person> getPersons() {
         return new ArrayList<>(userRepository.getAllPersons());
+    }
+
+    public void savefood(Food food){
+        userRepository.createFood(food);
     }
 
 

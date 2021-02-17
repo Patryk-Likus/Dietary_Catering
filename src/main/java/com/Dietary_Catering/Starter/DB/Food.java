@@ -1,14 +1,30 @@
 package com.Dietary_Catering.Starter.DB;
 
+import org.hibernate.validator.constraints.Length;
 
+import javax.persistence.*;
+
+@Entity
 public class Food {
 
-    private static int count = 1;
-    private int idx;
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @Column
     private String name;
+
+    @Column
     private String imgLink;
+
+    @Column
     private String nameDisplay;
+
+    @Column
     private int price;
+
+    @Column(length = 500)
     private String description;
 
 
@@ -18,16 +34,16 @@ public class Food {
         this.nameDisplay = nameDisplay;
         this.price = price;
         this.description = description;
-        this.idx = count;
-        count++;
+
     }
 
-    public int getIdx() {
-        return idx;
+
+    public int getId() {
+        return id;
     }
 
-    public void setIdx(int idx) {
-        this.idx = idx;
+    public void setId(int id) {
+        this.id = id;
     }
 
     public String getName() {

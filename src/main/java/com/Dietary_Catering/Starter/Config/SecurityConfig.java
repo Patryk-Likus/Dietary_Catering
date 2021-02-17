@@ -51,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").usernameParameter("name").passwordParameter("password").defaultSuccessUrl("/user_panel", true).and().csrf().disable();
+                .formLogin().loginPage("/login").usernameParameter("login").passwordParameter("password").defaultSuccessUrl("/user_panel", true).and().csrf().disable();
     }
 
 
@@ -61,8 +61,8 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
         auth.jdbcAuthentication()
                 .dataSource(dataSource)
-                .usersByUsernameQuery("SELECT name, password, enabled FROM Person WHERE name = ?")
-                .authoritiesByUsernameQuery("SELECT name, role FROM Person WHERE name = ?");
+                .usersByUsernameQuery("SELECT login, password, enabled FROM Person WHERE login = ?")
+                .authoritiesByUsernameQuery("SELECT login, role FROM Person WHERE login = ?");
     }
 
     @SuppressWarnings("deprecation")
