@@ -29,10 +29,10 @@ public class DbUserRepository implements UserRepository {
         return em.createQuery("from Person where role='USER'", Person.class).getResultList();
     }
 
-    @Transactional
-    public void createFood(Food food) {
-        em.persist(food);
-    }
+//    @Transactional
+//    public void createFood(Food food) {
+//        em.persist(food);
+//    }
 
 
 }

@@ -33,11 +33,11 @@ UserService userService;
     @GetMapping("/diets")
     public String dietsPage(Model model) {
         model.addAttribute("foodList", FoodFactory.getFoodList());
-        List<Food> foodList = FoodFactory.getFoodList();
+//        List<Food> foodList = FoodFactory.getFoodList();
 
-        for (Food f : foodList) {
-            userService.savefood(f);
-        }
+//        for (Food f : foodList) {
+//            userService.savefood(f);
+//        }
 
         return "diets";
     }

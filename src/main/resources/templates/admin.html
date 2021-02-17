@@ -48,9 +48,11 @@
     <div class="diet-changer">
         <select class="form-control" th:field="${foodList}">
             <option value="0">Wybierz dietę do edycji</option>
-            <option th:each="food : ${foodList}" th:value="${food.getIdx()}" th:text="${food.getNameDisplay()}"></option>
+            <option th:each="food : ${foodList}" th:value="${food.getId()}" th:text="${food.getNameDisplay()}"></option>
         </select>
     </div>
+
+
     <div class="table">
         <table >
             <tr>
