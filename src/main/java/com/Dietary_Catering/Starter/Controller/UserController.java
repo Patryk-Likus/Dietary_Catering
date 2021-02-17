@@ -69,6 +69,7 @@ UserService userService;
     @GetMapping("/admin")
     public String adminPage(Model model){
         model.addAttribute("foodList", FoodFactory.getFoodList());
+        model.addAttribute("personsList", userService.getPersons());
         return "admin";
     }
 
