@@ -41,11 +41,18 @@ public class Person {
     @Column
     private String password;
 
+    @Column
+    private String role = "USER";
+
+    @Column
+    private boolean enabled = true;
+
+
 
     public Person() {
     }
 
-    public Person(String name, String surname, String email, String phoneNumber, String streetAndNumber, String city, String postCode,String login ,String password) {
+    public Person(String name, String surname, String email, String phoneNumber, String streetAndNumber, String city, String postCode, String login , String password) {
         this.name = name;
         this.surname = surname;
         this.email = email;
@@ -55,6 +62,7 @@ public class Person {
         this.postCode = postCode;
         this.login = login;
         this.password = password;
+
     }
 
 

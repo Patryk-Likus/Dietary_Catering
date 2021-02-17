@@ -44,12 +44,12 @@
 <main>
     <div class="form-login">
         <label class="login">Zaloguj się</label><br><br>
-        <form action="#" th:action="@{/account}" method="post">
+        <form action="/login" method='POST'>
             <label>Email</label>
-            <input type="text" th:field="${person.email}"><br><br>
+            <input type='text' name="name" value=''><br><br>
             <label>Hasło</label>
-            <input type="text" th:field="${person.password}"><br>
-            <br><input type="submit" value="zaloguj się">
+            <input type='password' name="password" value=''><br>
+            <br><input name="submit" type="submit" value="zaloguj się">
         </form>
         <a th:href="${'/registry'}">"Załóż konto"</a>
     </div>

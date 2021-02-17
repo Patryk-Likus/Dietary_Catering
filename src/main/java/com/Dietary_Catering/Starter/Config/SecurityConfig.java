@@ -8,6 +8,7 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.configuration.EnableWebSecurity;
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.crypto.factory.PasswordEncoderFactories;
+import org.springframework.security.crypto.password.NoOpPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 
 import javax.sql.DataSource;
@@ -20,7 +21,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Autowired
     DataSource dataSource;
 
-    @Override
+  /*  @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
                 .antMatchers("/").permitAll()
@@ -37,6 +38,37 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Bean
     public PasswordEncoder passwordEncoder() {
         return PasswordEncoderFactories.createDelegatingPasswordEncoder();
+    }*/
+
+
+    @Override
+    public void configure(HttpSecurity security) throws Exception {
+
+        security.authorizeRequests()
+
+                //.antMatchers("/account").hasAnyAuthority("USER", "ADMIN")
+                .antMatchers("/admin").hasAnyAuthority("ADMIN")
+                .antMatchers("/**").permitAll()
+                .anyRequest().authenticated()
+                .and()
+                .formLogin().loginPage("/login").usernameParameter("name").passwordParameter("password").defaultSuccessUrl("/user_panel", true).and().csrf().disable();
+    }
+
+
+
+    @Autowired
+    public void securityUsers(AuthenticationManagerBuilder auth) throws Exception {
+
+        auth.jdbcAuthentication()
+                .dataSource(dataSource)
+                .usersByUsernameQuery("SELECT name, password, enabled FROM Person WHERE name = ?")
+                .authoritiesByUsernameQuery("SELECT name, role FROM Person WHERE name = ?");
+    }
+
+    @SuppressWarnings("deprecation")
+    @Bean
+    public static NoOpPasswordEncoder passwordEncoder() {
+        return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();
     }
 
 }

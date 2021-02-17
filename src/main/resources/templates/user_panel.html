@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Dietary Catering</title>
@@ -33,13 +33,15 @@
         <ul class="nav-links">
             <li><a href="kontakt" target="blank">Kontakt</a></li>
             <li><a href="login" target="blank">Logowanie</a></li>
+            <div sec:authorize="hasAuthority('ADMIN')" class="menu-separator-v"></div>
+            <li><a sec:authorize="hasAuthority('ADMIN')" class="menu-element" href="/admin">Admin panel</a></li>
         </ul>
     </nav>
 </header>
 
 <main>
     <div class="shop-headline">
-        <h2>Poznaj nasze diety!</h2>
+        <h2>ZALOGOWANO</h2>
     </div>
     <div class="shop-container">
         <div th:each="food : ${foodList}" class="shopContent-outer">
@@ -54,6 +56,11 @@
                 <button class="button-shopContent">Zamów</button>
             </div>
         </div>
+    </div>
+    <div class="row">
+        <form action="#" th:action="@{/logout}" method="post">
+            <input type="submit" value="Logout"/>
+        </form>
     </div>
 </main>
 

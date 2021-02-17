@@ -76,8 +76,6 @@ body {
 }
 main{
     border-top: solid #9b9b9b 1px;
-    min-height: 100%;
-
 }
 
 /* === FORMS === */
@@ -130,7 +128,7 @@ main{
 
 
 /*CONTACT FORM */
-input[type=text], select, textarea {
+input[type=text], [type=password], select, textarea {
     width: 100%;
     padding: 12px;
     border: 1px solid #ccc;
@@ -157,78 +155,26 @@ input[type=submit]:hover {
 
 /* === FOOTER === */
 
-.footer-core {
-    /*width: 100%;*/
-    /*position: absolute;*/
-    /*bottom: 0;*/
-}
-
 .footer-outer {
-    border-top: #9b9b9b solid 1px;
+    background-color: #4CAF50;
     width: 100%;
-    padding: 14px 20vw;
-}
-.footer-content {
-    display: flex;
-    justify-content: space-around;
-}
-
-
-.footer-title {
-    margin-bottom: 3vh;
+    min-height: 7vh;
 }
 
 .payment-methods {
-    width: 29rem;
-    /*margin: 20px;*/
-    padding: 20px;
+    background-color: #cccccc;
+    width: 20%;
 }
-
-.footer-links-list {
-    list-style: none;
-}
-
-.footer-links-list a {
-    text-decoration: none;
-    color: black;
-}
-
-.footer-links-list a:hover {
-    color: #009D80;
-    text-decoration: underline;
-    transition: all 0.2s ease 0s;
-}
-
 
 .payment-list {
     list-style: none;
     display: flex;
     flex-wrap: wrap;
-    /*margin: 20px;*/
+    margin: 10%;
 }
 
 .payment-item {
-    background-color: white;
-    padding: 3px;
-    min-width: 80px;
-    justify-content: space-around;
-    align-items: center;
+    padding: 6px;
     height: 40px;
-    border: #cccccc solid 1px;
-    margin: 0.2rem;
-}
-.payment-item img {
-    height: 100%;
-    margin-left: auto;
-    margin-right: auto;
-    display: block;
-}
-.copyright-footer {
-    text-align: center;
-    font-size: 0.7rem;
-}
-
-.copyright-footer span{
-    font-style: italic;
-    font-weight: bold;
+    border: red solid 1px;
 }

@@ -1,6 +1,5 @@
 package com.Dietary_Catering.Starter.Controller;
 
-
 import com.Dietary_Catering.Starter.DB.ContactForm;
 import com.Dietary_Catering.Starter.DB.Person;
 import com.Dietary_Catering.Starter.Factory.FoodFactory;
@@ -9,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+
 
 
 @Controller
@@ -20,8 +20,6 @@ UserService userService;
 
     @RequestMapping
     public String mainPage(){
-
-        //userService.createPerson(person);// po odswiezeniu strony dodaje uzytkownika person do bazy danych ( docelowo tutaj mamy przekazywać wartość z pola przy rejestracji)
         return "index";
     }
 
@@ -41,27 +39,11 @@ UserService userService;
         return "price-list";
     }
 
-    @GetMapping("/account")
-    public String agd(Model model){
-        model.addAttribute("person", new Person());
-//        model.addAttribute("productList", FactoryProduct.getProductList());
-        return "account";
-    }
-
-    @PostMapping("/account")
-    public String login(@ModelAttribute Person person){
-        System.out.println("email: " + person.getEmail() + " " + person.getPassword());
-        if(person.getEmail().equalsIgnoreCase("jan"))
-            return "redirect:/account";
-        return "index";
-    }
-
     @GetMapping("/registry")
         public String registryPage(Model model){
             model.addAttribute("person", new Person());
             return "registry";
         }
-
 
     @PostMapping("/registry")
     public String createPerson(@ModelAttribute Person person){
@@ -70,7 +52,6 @@ UserService userService;
 
         return "redirect:/account";
     }
-
 
     @GetMapping("/kontakt")
     public String KontaktForm(Model model){
@@ -85,24 +66,20 @@ UserService userService;
 
     }
 
-
     @GetMapping("/admin")
     public String adminPage(Model model){
         model.addAttribute("foodList", FoodFactory.getFoodList());
         return "admin";
     }
 
-    /*@RequestMapping(value = "/rejestracja", method = RequestMethod.POST)
-    public String saveUser(@Valid User user, BindingResult bindingResult){
-        if(bindingResult.hasErrors()){
-            bindingResult.getAllErrors().forEach(error ->{
-                System.out.println(error.getObjectName() + " " + error.getDefaultMessage());
-            }
-            );
-            return "rejestracja";
-        }else {
-            userService.saveUser(user);
-            return "indexLogIn";
-        }
-    }*/
+    @GetMapping("/user_panel")
+    public String afterLogin(Model model){
+        model.addAttribute("foodList", FoodFactory.getFoodList());
+        return "/user_panel";
+    }
+
+    @RequestMapping(value="/login", method=RequestMethod.GET)
+    public String login(){
+        return "login";
+    }
 }
