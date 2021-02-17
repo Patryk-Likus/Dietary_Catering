@@ -9,6 +9,7 @@
 
 body {
     background-color: #fffaeb;
+    display: block;
 }
 
 .top-bar {
@@ -158,9 +159,10 @@ input[type=submit]:hover {
 /* === FOOTER === */
 
 .footer-core {
-    /*width: 100%;*/
+    width: 100%;
     /*position: absolute;*/
     /*bottom: 0;*/
+    /*border: black solid 1px;*/
 }
 
 .footer-outer {
@@ -180,7 +182,6 @@ input[type=submit]:hover {
 
 .payment-methods {
     width: 29rem;
-    /*margin: 20px;*/
     padding: 20px;
 }
 

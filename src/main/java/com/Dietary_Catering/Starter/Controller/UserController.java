@@ -50,7 +50,7 @@ UserService userService;
         System.out.println(person);
         userService.createPerson(person);
 
-        return "redirect:/account";
+        return "redirect:/login";
     }
 
     @GetMapping("/kontakt")
