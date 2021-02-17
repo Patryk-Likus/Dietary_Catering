@@ -25,19 +25,9 @@ public class DbUserRepository implements UserRepository {
 
     @Override
     public Collection<Person> getAllPersons() {
-        return em.createQuery("from Person", Person.class).getResultList();
+        return em.createQuery("from Person where role='USER'", Person.class).getResultList();
     }
 
-    @Override
-    public boolean findAccount(String email, String password) {
-       Person isAccount = em.createQuery("from Person p where p.email=:email AND p.password=:password", Person.class)
-                .setParameter("email", email)
-                .setParameter("password", password)
-                .getSingleResult();
-        if(isAccount.equals("null"))
-            return false;
-        else
-            return true;
-    }
+
 
 }

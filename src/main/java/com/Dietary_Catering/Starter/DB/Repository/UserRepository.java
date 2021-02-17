@@ -12,6 +12,6 @@ public interface UserRepository {
 
    Collection<Person> getAllPersons();
 
-     boolean findAccount(String email, String password);
+
 
 }

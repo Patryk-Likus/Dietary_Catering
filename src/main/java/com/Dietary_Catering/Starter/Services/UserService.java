@@ -25,7 +25,5 @@ public class UserService {
         return new ArrayList<>(userRepository.getAllPersons());
     }
 
-    public boolean findAccount(String email, String password) {
-        return userRepository.findAccount(email, password);
-    }
+
 }
