@@ -1,6 +1,7 @@
 package com.Dietary_Catering.Starter.Controller;
 
 import com.Dietary_Catering.Starter.DB.ContactForm;
+import com.Dietary_Catering.Starter.DB.Food;
 import com.Dietary_Catering.Starter.DB.Person;
 import com.Dietary_Catering.Starter.Factory.FoodFactory;
 import com.Dietary_Catering.Starter.Services.UserService;
@@ -9,6 +10,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
 
 
 @Controller
@@ -29,8 +31,14 @@ UserService userService;
     }
 
     @GetMapping("/diets")
-    public String dietsPage(Model model){
+    public String dietsPage(Model model) {
         model.addAttribute("foodList", FoodFactory.getFoodList());
+        List<Food> foodList = FoodFactory.getFoodList();
+
+        for (Food f : foodList) {
+            userService.savefood(f);
+        }
+
         return "diets";
     }
 
@@ -49,8 +57,7 @@ UserService userService;
     public String createPerson(@ModelAttribute Person person){
         System.out.println(person);
         userService.createPerson(person);
-
-        return "redirect:/account";
+        return "redirect:/login";
     }
 
     @GetMapping("/kontakt")

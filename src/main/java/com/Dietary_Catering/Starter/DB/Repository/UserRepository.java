@@ -1,5 +1,6 @@
 package com.Dietary_Catering.Starter.DB.Repository;
 
+import com.Dietary_Catering.Starter.DB.Food;
 import com.Dietary_Catering.Starter.DB.Person;
 
 import java.util.Collection;
@@ -11,6 +12,8 @@ public interface UserRepository {
     void createUser(Person user);
 
    Collection<Person> getAllPersons();
+
+   void createFood(Food food);
 
 
 

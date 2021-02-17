@@ -1,5 +1,6 @@
 package com.Dietary_Catering.Starter.DB.Repository;
 
+import com.Dietary_Catering.Starter.DB.Food;
 import com.Dietary_Catering.Starter.DB.Person;
 
 import org.springframework.stereotype.Repository;
@@ -28,6 +29,10 @@ public class DbUserRepository implements UserRepository {
         return em.createQuery("from Person where role='USER'", Person.class).getResultList();
     }
 
+    @Transactional
+    public void createFood(Food food) {
+        em.persist(food);
+    }
 
 
 }
