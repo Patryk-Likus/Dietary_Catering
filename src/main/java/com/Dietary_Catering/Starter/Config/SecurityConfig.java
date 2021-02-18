@@ -51,7 +51,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
-                .formLogin().loginPage("/login").usernameParameter("login").passwordParameter("password").defaultSuccessUrl("/user_panel", true).and().csrf().disable();
+                .formLogin().loginPage("/login").usernameParameter("login").passwordParameter("password").defaultSuccessUrl("/diets", true).and().csrf().disable();
     }
 
 

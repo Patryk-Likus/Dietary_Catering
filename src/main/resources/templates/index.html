@@ -1,10 +1,10 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
 <head>
     <meta charset="UTF-8">
     <title>Dietary Catering</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="index.css">
+    <link rel="stylesheet" href="index-style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -38,27 +38,31 @@
             <li><a href="kontakt" target="blank">Kontakt</a></li>
             <li>
 
-<!--                //-->
+                <!--                //-->
                 <div class="dropdown">
                     <button class="dropbtn">
                         <img src="images/user-drop.png" alt="Login" class="user-drop-img">
                     </button>
                     <div class="dropdown-content">
                         <div class="header">
-                            <p>Mega Menu</p>
                         </div>
                         <div class="row">
                             <div class="column">
-                                <h3>Category 1</h3>
-                                <a href="login">Logowanie</a>
-                                <a href="registry">Rejestracja</a>
-                                <a href="#">Link 3</a>
+                                <a sec:authorize="!isAuthenticated()" href="login">Logowanie</a>
+                                <a sec:authorize="!isAuthenticated()" href="registry">Rejestracja</a>
+                                <a sec:authorize="isAuthenticated()" href="#">Ustawienia</a>
+                                <a sec:authorize="isAuthenticated()" href="#">Koszyk</a>
+                                <a sec:authorize="isAuthenticated()" href="#">Historia</a>
+                                <a sec:authorize="hasAuthority('ADMIN')" class="" href="/admin">Admin panel</a>
+                                <form sec:authorize="isAuthenticated()" action="#" th:action="@{/logout}" method="post">
+                                    <input type="submit" value="Wyloguj"/>
+                                </form>
                             </div>
                         </div>
                     </div>
                 </div>
 
-<!--                //-->
+                <!--                //-->
             </li>
         </ul>
     </nav>
