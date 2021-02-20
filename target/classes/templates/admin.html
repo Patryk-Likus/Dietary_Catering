@@ -99,7 +99,27 @@
         <div id="history-panel">
             HISTORIA
 
+            <div class="table-orderHistory">
+                <table >
+                    <tr>
+                        <th>ID</th>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>Dieta</th>
+                        <th>Cena</th>
+                        <th>Data zamówienia</th>
+                    </tr>
+                    <tr th:each="oH : ${orderHistory}">
+                        <td th:text="${oH.id}"></td>
+                        <td th:text="${oH.person.name}"></td>
+                        <td th:text="${oH.person.surname}"></td>
+                        <td th:text="${oH.food.nameDisplay}"></td>
+                        <td th:text="${oH.food.price}"></td>
+                        <td th:text="${oH.localDateTime}"></td>
+                    </tr>
 
+                </table>
+            </div>
         </div>
         <div id="person-panel">
 
@@ -173,26 +193,7 @@
         </table>
     </div>
 
-        <div class="table-orderHistory">
-            <table >
-                <tr>
-                    <th>ID</th>
-                    <th>Imię</th>
-                    <th>Nazwisko</th>
-                    <th>Dieta</th>
-                    <th>Cena</th>
-                    <th>Data zamówienia</th>
-                </tr>
-                <tr th:each="oH : ${orderHistory}">
-                    <td th:text="${oH.food.price}"></td>
-                    <td th:text="${oH.food.getNameDisplay}"></td>
-                    <td th:text="${oH.localDateTime}"></td>
-                </tr>
 
-
-
-            </table>
-        </div>
 
 
 
