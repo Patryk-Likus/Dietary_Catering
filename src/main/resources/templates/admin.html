@@ -184,8 +184,11 @@
                     <th>Data zamówienia</th>
                 </tr>
                 <tr th:each="oH : ${orderHistory}">
+                    <td th:text="${oH.id}"></td>
+                    <td th:text="${oH.person.name}"></td>
+                    <td th:text="${oH.person.surname}"></td>
+                    <td th:text="${oH.food.nameDisplay}"></td>
                     <td th:text="${oH.food.price}"></td>
-                    <td th:text="${oH.food.getNameDisplay}"></td>
                     <td th:text="${oH.localDateTime}"></td>
                 </tr>
 

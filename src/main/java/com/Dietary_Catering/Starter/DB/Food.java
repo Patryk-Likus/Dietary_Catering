@@ -53,11 +53,11 @@ public class Food {
         this.id = id;
     }
 
-    public String getName() {
+    public String getNameDiet() {
         return nameDiet;
     }
 
-    public void setName(String name) {
+    public void setNameDiet(String name) {
         this.nameDiet = nameDiet;
     }
 
