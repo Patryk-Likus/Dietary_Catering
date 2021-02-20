@@ -40,8 +40,8 @@ UserService userService;
 //            userService.savefood(f);
 //        }
 
-        Person person = userService.getPersonById(90);
-        Food food = userService.getFoodById(100);
+        Person person = userService.getPersonById(89);
+        Food food = userService.getFoodById(101);
         userService.saveOrderHistory(new OrderHistory(person, food));
 
         return "diets";

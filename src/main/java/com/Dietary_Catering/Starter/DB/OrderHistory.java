@@ -1,7 +1,11 @@
 package com.Dietary_Catering.Starter.DB;
 
 import javax.persistence.*;
+import java.text.SimpleDateFormat;
+import java.time.LocalDate;
 import java.time.LocalDateTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 
 @Entity
 public class OrderHistory {
@@ -19,7 +23,9 @@ public class OrderHistory {
     Food food;
 
     @Column()
-    LocalDateTime localDateTime;
+    String localDateTime;
+
+
 
     public OrderHistory() {
     }
@@ -27,7 +33,10 @@ public class OrderHistory {
     public OrderHistory(Person person, Food food) {
         this.person = person;
         this.food = food;
-        this.localDateTime = localDateTime.now();
+
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
+        LocalDateTime dateTime = LocalDateTime.now();
+        this.localDateTime = dateTime.format(formatter);
     }
 
     public int getId() {
@@ -54,11 +63,11 @@ public class OrderHistory {
         this.food = food;
     }
 
-    public LocalDateTime getLocalDateTime() {
+    public String getLocalDateTime() {
         return localDateTime;
     }
 
-    public void setLocalDateTime(LocalDateTime localDateTime) {
+    public void setLocalDateTime(String localDateTime) {
         this.localDateTime = localDateTime;
     }
 
