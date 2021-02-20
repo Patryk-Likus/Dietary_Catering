@@ -73,10 +73,25 @@
 
     <div id="admin-buttons">
         <ul>
-            <li><button href="javascript:void(null)" onclick="showhide('diets-panel');" class="admin-button">Diety</button></li>
-            <li><button href="javascript:void(null)" onclick="showhide('history-panel');" class="admin-button">Historia</button></li>
-            <li><button href="javascript:void(null)" onclick="showhide('person-panel');" class="admin-button">Użytkownicy</button></li>
-            <li><button href="javascript:void(null)" onclick="showhide('messages-panel');" class="admin-button">Wiadomości</button></li>
+            <li>
+                <button href="javascript:void(null)" onclick="showhide('diets-panel');" class="admin-button">Diety
+                </button>
+            </li>
+            <li>
+                <button href="javascript:void(null)" onclick="showhide('history-panel');" class="admin-button">
+                    Historia
+                </button>
+            </li>
+            <li>
+                <button href="javascript:void(null)" onclick="showhide('person-panel');" class="admin-button">
+                    Użytkownicy
+                </button>
+            </li>
+            <li>
+                <button href="javascript:void(null)" onclick="showhide('messages-panel');" class="admin-button">
+                    Wiadomości
+                </button>
+            </li>
         </ul>
     </div>
 
@@ -85,14 +100,30 @@
 
             DIETY
 
-            <div class="diet-changer">
-                <select class="form-control" th:field="${foodList}">
-                    <option value="0">Wybierz dietę do edycji</option>
-                    <option th:each="food : ${foodList}" th:value="${food.getId()}" th:text="${food.getNameDisplay()}"></option>
-                </select>
-            </div>
-            <div class="table-orderHistory">
-                <table >
+<!--            <div class="diet-changer">-->
+<!--                <select class="form-control" th:field="${foodList}">-->
+<!--                    <option value="0">Wybierz dietę do edycji</option>-->
+<!--                    <option th:each="food : ${foodList}" th:value="${food.getId()}"-->
+<!--                            th:text="${food.getNameDisplay()}"></option>-->
+<!--                </select>-->
+<!--            </div>-->
+
+
+            <a th:href="@{/admin/showNewFoodForm}">Dodaj dietę</a>
+
+
+<!--            <form action="#" th:action="@{/saveFood}" th:object="${food}" method="POST" class="admin-form">-->
+<!--                <input type="text" th:field = "*{nameDiet}" placeholder="nameDiet">-->
+<!--                &lt;!&ndash;        <input type="text" th:field = "*{imgLink}" placeholder="imgLink">&ndash;&gt;-->
+<!--                <input type="text" th:field = "*{nameDisplay}" placeholder="nameDisplay">-->
+<!--                <input type="number" th:field = "*{price}" placeholder="price">-->
+<!--                <input type="text" th:field = "*{description}" placeholder="description">-->
+<!--                <button type="submit">Zapisz Dietę</button>-->
+
+<!--            </form>-->
+
+                <div class="table-orderHistory">
+                <table>
                     <tr>
                         <th>ID</th>
                         <th>Nazwa robocza</th>
@@ -100,6 +131,8 @@
                         <th>Nazwa główna</th>
                         <th>Cena</th>
                         <th>Opis Diety</th>
+                        <th>Akcje</th>
+
                     </tr>
                     <tr th:each="food : ${foodList}">
                         <td th:text="${food.id}"></td>
@@ -108,6 +141,10 @@
                         <td th:text="${food.nameDisplay}"></td>
                         <td th:text="${food.price}"></td>
                         <td th:text="${food.description}"></td>
+                        <td> <a th:href="@{/admin/showUpdateFoodForm/{id}(id=${food.id})}">Update</a></td>
+                        <td> <a th:href="@{/deleteFood/{id}(id=${food.id})}">Delete</a></td>
+
+
                     </tr>
                 </table>
             </div>
@@ -119,7 +156,7 @@
             HISTORIA
 
             <div class="table-orderHistory">
-                <table >
+                <table>
                     <tr>
                         <th>ID</th>
                         <th>Imię</th>
@@ -179,46 +216,41 @@
             </div>
 
         </div>
-    <div class="table-person">
-        <table >
-            <tr>
-                <th>ID</th>
-                <th>Imię</th>
-                <th>Nazwisko</th>
-                <th>Email</th>
-                <th>Numer Telefonu</th>
-                <th>Kod pocztowy</th>
-                <th>Miasto</th>
-                <th>Ulica i numer budynku</th>
-                <th>Login</th>
-                <th>Hasło</th>
-                <th>Rola</th>
-                <th>Aktywne konto</th>
-            </tr>
-            <tr th:each="person : ${personsList}">
-                <td th:text="${person.id}"></td>
-                <td th:text="${person.name}"></td>
-                <td th:text="${person.surname}"></td>
-                <td th:text="${person.email}"></td>
-                <td th:text="${person.phoneNumber}"></td>
-                <td th:text="${person.postCode}"></td>
-                <td th:text="${person.city}"></td>
-                <td th:text="${person.streetAndNumber}"></td>
-                <td th:text="${person.login}"></td>
-                <td th:text="${person.password}"></td>
-                <td th:text="${person.role}"></td>
-                <td th:text="${person.enabled}"></td>
-            </tr>
-        </table>
-    </div>
-
-
-
-
-
+        <div class="table-person">
+            <table>
+                <tr>
+                    <th>ID</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>Email</th>
+                    <th>Numer Telefonu</th>
+                    <th>Kod pocztowy</th>
+                    <th>Miasto</th>
+                    <th>Ulica i numer budynku</th>
+                    <th>Login</th>
+                    <th>Hasło</th>
+                    <th>Rola</th>
+                    <th>Aktywne konto</th>
+                </tr>
+                <tr th:each="person : ${personsList}">
+                    <td th:text="${person.id}"></td>
+                    <td th:text="${person.name}"></td>
+                    <td th:text="${person.surname}"></td>
+                    <td th:text="${person.email}"></td>
+                    <td th:text="${person.phoneNumber}"></td>
+                    <td th:text="${person.postCode}"></td>
+                    <td th:text="${person.city}"></td>
+                    <td th:text="${person.streetAndNumber}"></td>
+                    <td th:text="${person.login}"></td>
+                    <td th:text="${person.password}"></td>
+                    <td th:text="${person.role}"></td>
+                    <td th:text="${person.enabled}"></td>
+                </tr>
+            </table>
+        </div>
         <div id="messages-panel">
             WIADOMOSCI
-            <table >
+            <table>
                 <tr>
                     <th>ID</th>
                     <th>Imię</th>

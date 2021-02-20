@@ -30,20 +30,13 @@ public class DbUserRepository implements UserRepository {
     public Collection<Person> getAllPersons() {
         return em.createQuery("from Person where role='USER'", Person.class).getResultList();
     }
-    @Override
-    public Collection<Food> getAllFoods() {
-        return em.createQuery("FROM Food", Food.class).getResultList();
-    }
+
 
     @Transactional
     public Person getPersonById(int id) {
         return em.createQuery("from Person where id=:id", Person.class).setParameter("id", id).getSingleResult();
     }
 
-    @Transactional
-    public Food getFoodById(int id) {
-        return em.createQuery("from Food where id=:id", Food.class).setParameter("id", id).getSingleResult();
-    }
 
     @Transactional
     public void saveOrderHistory(OrderHistory orderHistory) {
@@ -56,11 +49,6 @@ public class DbUserRepository implements UserRepository {
         return em.createQuery("from OrderHistory", OrderHistory.class).getResultList();
     }
 
-//    @Transactional
-//    public void createFood(Food food) {
-//        em.persist(food);
-//    }
-
     //do Formularza
     @Transactional
     public void createForm(ContactForm contactForm) {
@@ -71,13 +59,6 @@ public class DbUserRepository implements UserRepository {
     public Collection<ContactForm> getAllContactForms() {
         return em.createQuery("from ContactForm", ContactForm.class).getResultList();
     }
-
-    /*@Transactional
-    public void createFood(Food food) {
-        em.persist(food);
-    }*/
-
-
 
 
 }

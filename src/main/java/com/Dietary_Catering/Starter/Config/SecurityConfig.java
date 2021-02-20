@@ -48,6 +48,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
                 //.antMatchers("/account").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers("/admin").hasAnyAuthority("ADMIN")
+                .antMatchers("/admin/showNewFoodForm").hasAnyAuthority("ADMIN")
                 .antMatchers("/**").permitAll()
                 .anyRequest().authenticated()
                 .and()

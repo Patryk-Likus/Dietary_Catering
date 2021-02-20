@@ -13,12 +13,10 @@ public class Food {
     private int id;
 
     @Column
-
-    private String nameDiet;
-
+    private String imgLink;
 
     @Column
-    private String imgLink;
+    private String nameDiet;
 
     @Column
     private String nameDisplay;
@@ -37,16 +35,13 @@ public class Food {
     public Food(String nameDiet, String nameDisplay, int price, String description) {
         this.nameDiet = nameDiet;
         this.imgLink = nameDiet + ".png";
-
         this.nameDisplay = nameDisplay;
         this.price = price;
         this.description = description;
 
     }
 
-    public Food() {
-
-    }
+    public Food() { }
 
 
     public int getId() {
@@ -62,9 +57,9 @@ public class Food {
         return nameDiet;
     }
 
-    public void setNameDiet(String name) {
+    public void setNameDiet(String nameDiet) {
+        this.imgLink = nameDiet+".png";
         this.nameDiet = nameDiet;
-
     }
 
     public String getImgLink() {
