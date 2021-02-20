@@ -29,6 +29,10 @@ public class DbUserRepository implements UserRepository {
     public Collection<Person> getAllPersons() {
         return em.createQuery("from Person where role='USER'", Person.class).getResultList();
     }
+    @Override
+    public Collection<Food> getAllFoods() {
+        return em.createQuery("FROM Food", Food.class).getResultList();
+    }
 
     @Transactional
     public Person getPersonById(int id) {

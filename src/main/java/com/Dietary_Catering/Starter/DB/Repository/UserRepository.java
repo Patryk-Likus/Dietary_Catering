@@ -14,11 +14,15 @@ public interface UserRepository {
 
    Collection<Person> getAllPersons();
 
+   Collection<Food> getAllFoods();
+
 //   void createFood(Food food);
     
     Person getPersonById(int id);
     
     Food getFoodById(int id);
+
+
 
 
     void saveOrderHistory(OrderHistory orderHistory);

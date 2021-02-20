@@ -33,15 +33,15 @@ UserService userService;
 
     @GetMapping("/diets")
     public String dietsPage(Model model) {
-        model.addAttribute("foodList", FoodFactory.getFoodList());
+        model.addAttribute("foodList", userService.getFoodList());
 //        List<Food> foodList = FoodFactory.getFoodList();
 
 //        for (Food f : foodList) {
 //            userService.savefood(f);
 //        }
 
-        Person person = userService.getPersonById(89);
-        Food food = userService.getFoodById(101);
+        Person person = userService.getPersonById(48);
+        Food food = userService.getFoodById(37);
         userService.saveOrderHistory(new OrderHistory(person, food));
 
         return "diets";
@@ -80,14 +80,14 @@ UserService userService;
 
     @GetMapping("/admin")
     public String adminPage(Model model){
-        model.addAttribute("foodList", FoodFactory.getFoodList());
+        model.addAttribute("foodList", userService.getFoodList());
         model.addAttribute("personsList", userService.getPersons());
         return "admin";
     }
 
     @GetMapping("/user_panel")
     public String afterLogin(Model model){
-        model.addAttribute("foodList", FoodFactory.getFoodList());
+        model.addAttribute("foodList", userService.getFoodList());
         return "/user_panel";
     }
 

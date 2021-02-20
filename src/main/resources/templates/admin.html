@@ -44,8 +44,8 @@
                         <img src="images/user-drop.png" alt="Login" class="user-drop-img">
                     </button>
                     <div class="dropdown-content">
-<!--                        <div class="header">-->
-<!--                        </div>-->
+                        <!--                        <div class="header">-->
+                        <!--                        </div>-->
                         <div class="row">
                             <div class="column">
                                 <a sec:authorize="!isAuthenticated()" href="login">Logowanie</a>
@@ -67,68 +67,117 @@
         </ul>
     </nav>
 </header>
+
 <main>
 
 
-    <div class="diet-changer">
-        <select class="form-control" th:field="${foodList}">
-            <option value="0">Wybierz dietę do edycji</option>
-            <option th:each="food : ${foodList}" th:value="${food.getId()}" th:text="${food.getNameDisplay()}"></option>
-        </select>
+    <div id="admin-buttons">
+        <ul>
+            <li><button href="javascript:void(null)" onclick="showhide('diets-panel');" class="admin-button">Diety</button></li>
+            <li><button href="javascript:void(null)" onclick="showhide('history-panel');" class="admin-button">Historia</button></li>
+            <li><button href="javascript:void(null)" onclick="showhide('person-panel');" class="admin-button">Użytkownicy</button></li>
+            <li><button href="javascript:void(null)" onclick="showhide('messages-panel');" class="admin-button">Wiadomości</button></li>
+        </ul>
+    </div>
+
+    <div id="content-panels">
+        <div id="diets-panel">
+
+            DIETY
+
+            <div class="diet-changer">
+                <select class="form-control" th:field="${foodList}">
+                    <option value="0">Wybierz dietę do edycji</option>
+                    <option th:each="food : ${foodList}" th:value="${food.getId()}" th:text="${food.getNameDisplay()}"></option>
+                </select>
+            </div>
+
+
+        </div>
+
+
+        <div id="history-panel">
+            HISTORIA
+
+
+
+        </div>
+        <div id="person-panel">
+
+            OSOBY
+
+
+            <div class="table">
+                <table>
+                    <tr>
+                        <th>ID</th>
+                        <th>Imię</th>
+                        <th>Nazwisko</th>
+                        <th>Email</th>
+                        <th>Nr Telefonu</th>
+                        <th>Kod pocztowy</th>
+                        <th>Miasto</th>
+                        <th>Adres</th>
+                        <th>Login</th>
+                        <th>Hasło</th>
+                        <th>Rola</th>
+                        <th>Aktywne konto</th>
+                    </tr>
+                    <tr th:each="person : ${personsList}">
+                        <td th:text="${person.id}"></td>
+                        <td th:text="${person.name}"></td>
+                        <td th:text="${person.surname}"></td>
+                        <td th:text="${person.email}"></td>
+                        <td th:text="${person.phoneNumber}"></td>
+                        <td th:text="${person.postCode}"></td>
+                        <td th:text="${person.city}"></td>
+                        <td th:text="${person.streetAndNumber}"></td>
+                        <td th:text="${person.login}"></td>
+                        <td th:text="${person.password}"></td>
+                        <td th:text="${person.role}"></td>
+                        <td th:text="${person.enabled}"></td>
+                    </tr>
+                </table>
+            </div>
+
+        </div>
+
+        <div id="messages-panel">
+            WIADOMOSCI
+
+
+
+        </div>
     </div>
 
 
-    <div class="table">
-        <table >
-            <tr>
-                <th>ID</th>
-                <th>Imię</th>
-                <th>Nazwisko</th>
-                <th>Email</th>
-                <th>Numer Telefonu</th>
-                <th>Kod pocztowy</th>
-                <th>Miasto</th>
-                <th>Ulica i numer budynku</th>
-                <th>Login</th>
-                <th>Hasło</th>
-                <th>Rola</th>
-                <th>Aktywne konto</th>
-            </tr>
-            <tr th:each="person : ${personsList}">
-                <td th:text="${person.id}"></td>
-                <td th:text="${person.name}"></td>
-                <td th:text="${person.surname}"></td>
-                <td th:text="${person.email}"></td>
-                <td th:text="${person.phoneNumber}"></td>
-                <td th:text="${person.postCode}"></td>
-                <td th:text="${person.city}"></td>
-                <td th:text="${person.streetAndNumber}"></td>
-                <td th:text="${person.login}"></td>
-                <td th:text="${person.password}"></td>
-                <td th:text="${person.role}"></td>
-                <td th:text="${person.enabled}"></td>
-            </tr>
-        </table>
-    </div>
 
 
 
-
-
-    <div class="row">
-        <form action="#" th:action="@{/logout}" method="post">
-            <input type="submit" value="Logout"/>
-        </form>
-    </div>
-    
-    
-    
-    
 </main>
 
 <footer>
 
 
 </footer>
+
+
+<script>
+    var divState = {};
+    function showhide(id) {
+        if (document.getElementById) {
+            var divid = document.getElementById(id);
+            divState[id] = (divState[id]) ? false : true;
+            //close others
+            for (var div in divState){
+                if (divState[div] && div != id){
+                    document.getElementById(div).style.display = 'none';
+                    divState[div] = false;
+                }
+            }
+            divid.style.display = (divid.style.display == 'block' ? 'none' : 'block');
+        }
+    }
+</script>
 </body>
 </html>

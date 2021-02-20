@@ -31,6 +31,11 @@ public class UserService {
        return userRepository.getPersonById(id);
     }
 
+    public List<Food> getFoodList() {
+        return new ArrayList<>(userRepository.getAllFoods());
+    }
+
+
     public Food getFoodById(int id){
         return userRepository.getFoodById(id);
     }
