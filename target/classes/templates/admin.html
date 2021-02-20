@@ -91,7 +91,26 @@
                     <option th:each="food : ${foodList}" th:value="${food.getId()}" th:text="${food.getNameDisplay()}"></option>
                 </select>
             </div>
-
+            <div class="table-orderHistory">
+                <table >
+                    <tr>
+                        <th>ID</th>
+                        <th>Nazwa robocza</th>
+                        <th>Nazwa grafiki</th>
+                        <th>Nazwa główna</th>
+                        <th>Cena</th>
+                        <th>Opis Diety</th>
+                    </tr>
+                    <tr th:each="food : ${foodList}">
+                        <td th:text="${food.id}"></td>
+                        <td th:text="${food.nameDiet}"></td>
+                        <td th:text="${food.imgLink}"></td>
+                        <td th:text="${food.nameDisplay}"></td>
+                        <td th:text="${food.price}"></td>
+                        <td th:text="${food.description}"></td>
+                    </tr>
+                </table>
+            </div>
 
         </div>
 
@@ -199,15 +218,24 @@
 
         <div id="messages-panel">
             WIADOMOSCI
-
-
-
+            <table >
+                <tr>
+                    <th>ID</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>Email</th>
+                    <th>Wiadomość</th>
+                </tr>
+                <tr th:each="contact : ${contactList}">
+                    <td th:text="${contact.id}"></td>
+                    <td th:text="${contact.name}"></td>
+                    <td th:text="${contact.surname}"></td>
+                    <td th:text="${contact.email}"></td>
+                    <td th:text="${contact.message}"></td>
+                </tr>
+            </table>
         </div>
     </div>
-
-
-
-
 
 </main>
 

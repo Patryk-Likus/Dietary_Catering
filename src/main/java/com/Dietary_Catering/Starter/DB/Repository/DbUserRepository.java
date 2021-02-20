@@ -41,6 +41,11 @@ public class DbUserRepository implements UserRepository {
     }
 
     @Transactional
+    public Person getPersonByLogin(String login) {
+        return em.createQuery("from Person where login=:login", Person.class).setParameter("login", login).getSingleResult();
+    }
+
+    @Transactional
     public Food getFoodById(int id) {
         return em.createQuery("from Food where id=:id", Food.class).setParameter("id", id).getSingleResult();
     }

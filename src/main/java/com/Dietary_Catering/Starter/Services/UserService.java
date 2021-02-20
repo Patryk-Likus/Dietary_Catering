@@ -61,6 +61,10 @@ public class UserService {
     public List<ContactForm> getAllContactForms(){
        return new ArrayList<>(userRepository.getAllContactForms());
     }
+
+    public Person getPersonByLogin(String login){
+        return userRepository.getPersonByLogin(login);
+    }
 }
 
 

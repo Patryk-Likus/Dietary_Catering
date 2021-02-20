@@ -27,7 +27,7 @@ public interface UserRepository {
 
     Collection<ContactForm> getAllContactForms();
 
-
+    Person getPersonByLogin(String login);
 
 
     void saveOrderHistory(OrderHistory orderHistory);
