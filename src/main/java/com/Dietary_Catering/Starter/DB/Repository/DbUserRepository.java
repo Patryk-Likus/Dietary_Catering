@@ -50,7 +50,7 @@ public class DbUserRepository implements UserRepository {
         em.persist(orderHistory);
     }
 
-<<<<<<< HEAD
+
     @Override
     public Collection<OrderHistory> getAllOrderHistory() {
         return em.createQuery("from OrderHistory", OrderHistory.class).getResultList();
@@ -60,7 +60,7 @@ public class DbUserRepository implements UserRepository {
 //    public void createFood(Food food) {
 //        em.persist(food);
 //    }
-=======
+
     //do Formularza
     @Transactional
     public void createForm(ContactForm contactForm) {
@@ -76,7 +76,6 @@ public class DbUserRepository implements UserRepository {
     public void createFood(Food food) {
         em.persist(food);
     }*/
->>>>>>> dead443... dane z formularza do bazy
 
 
 
