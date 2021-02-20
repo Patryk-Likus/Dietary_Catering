@@ -47,7 +47,7 @@ public class DbUserRepository implements UserRepository {
 
     @Override
     public Collection<OrderHistory> getAllOrderHistory() {
-        return em.createQuery("from OrderHistory where id=116", OrderHistory.class).getResultList();
+        return em.createQuery("from OrderHistory", OrderHistory.class).getResultList();
     }
 
 //    @Transactional
