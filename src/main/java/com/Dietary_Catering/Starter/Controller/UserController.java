@@ -45,8 +45,8 @@ UserService userService;
 
 
 
-        Person person = userService.getPersonById(6);
-        Food food = userService.getFoodById(7);
+        Person person = userService.getPersonById(90);
+        Food food = userService.getFoodById(101);
 
         userService.saveOrderHistory(new OrderHistory(person, food));
 
