@@ -68,8 +68,8 @@ public class DbUserRepository implements UserRepository {
     }
 
     @Transactional
-    public ContactForm getContactForm(int id) {
-        return em.createQuery("from ContactForm where id=:id", ContactForm.class).setParameter("id", id).getSingleResult();
+    public Collection<ContactForm> getAllContactForms() {
+        return em.createQuery("from ContactForm", ContactForm.class).getResultList();
     }
 
     /*@Transactional

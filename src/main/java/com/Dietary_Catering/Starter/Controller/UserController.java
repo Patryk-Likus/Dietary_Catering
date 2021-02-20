@@ -82,6 +82,7 @@ UserService userService;
         model.addAttribute("foodList", userService.getFoodList());
         model.addAttribute("personsList", userService.getPersons());
         model.addAttribute("orderHistory", userService.getAllOrderHistory());
+        model.addAttribute("contactList", userService.getAllContactForms());
         return "admin";
     }
 

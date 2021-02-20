@@ -57,11 +57,13 @@ public class UserService {
     public void createContactForm(ContactForm contactForm){
         userRepository.createForm(contactForm);
     }
+
+    public List<ContactForm> getAllContactForms(){
+       return new ArrayList<>(userRepository.getAllContactForms());
+    }
 }
 
-   /* public void savefood(Food food){
-        userRepository.createFood(food);
-    }*/
+
 
 
 

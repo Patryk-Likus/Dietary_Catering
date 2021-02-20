@@ -25,7 +25,7 @@ public interface UserRepository {
     
     Food getFoodById(int id);
 
-    ContactForm getContactForm(int id);
+    Collection<ContactForm> getAllContactForms();
 
 
 
