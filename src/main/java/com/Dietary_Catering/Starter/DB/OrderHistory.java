@@ -1,11 +1,8 @@
 package com.Dietary_Catering.Starter.DB;
 
 import javax.persistence.*;
-import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
-import java.util.Date;
 
 @Entity
 public class OrderHistory {

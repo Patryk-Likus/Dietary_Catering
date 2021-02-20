@@ -49,6 +49,11 @@ public class DbUserRepository implements UserRepository {
         em.persist(orderHistory);
     }
 
+    @Override
+    public Collection<OrderHistory> getAllOrderHistory() {
+        return em.createQuery("from OrderHistory where id=116", OrderHistory.class).getResultList();
+    }
+
 //    @Transactional
 //    public void createFood(Food food) {
 //        em.persist(food);

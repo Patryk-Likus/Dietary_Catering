@@ -5,9 +5,11 @@ import com.Dietary_Catering.Starter.DB.OrderHistory;
 import com.Dietary_Catering.Starter.DB.Person;
 import com.Dietary_Catering.Starter.DB.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
 
@@ -43,9 +45,15 @@ public class UserService {
     public void saveOrderHistory(OrderHistory orderHistory) {
         userRepository.saveOrderHistory(orderHistory);
     }
+
+   public List<OrderHistory> getAllOrderHistory() {
+        return new ArrayList<>(userRepository.getAllOrderHistory());
+    }
+
+}
 //    public void savefood(Food food){
 //        userRepository.createFood(food);
 //    }
 
 
-}
+

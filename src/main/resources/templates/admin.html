@@ -100,7 +100,6 @@
             HISTORIA
 
 
-
         </div>
         <div id="person-panel">
 
@@ -141,6 +140,61 @@
             </div>
 
         </div>
+    <div class="table-person">
+        <table >
+            <tr>
+                <th>ID</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Email</th>
+                <th>Numer Telefonu</th>
+                <th>Kod pocztowy</th>
+                <th>Miasto</th>
+                <th>Ulica i numer budynku</th>
+                <th>Login</th>
+                <th>Hasło</th>
+                <th>Rola</th>
+                <th>Aktywne konto</th>
+            </tr>
+            <tr th:each="person : ${personsList}">
+                <td th:text="${person.id}"></td>
+                <td th:text="${person.name}"></td>
+                <td th:text="${person.surname}"></td>
+                <td th:text="${person.email}"></td>
+                <td th:text="${person.phoneNumber}"></td>
+                <td th:text="${person.postCode}"></td>
+                <td th:text="${person.city}"></td>
+                <td th:text="${person.streetAndNumber}"></td>
+                <td th:text="${person.login}"></td>
+                <td th:text="${person.password}"></td>
+                <td th:text="${person.role}"></td>
+                <td th:text="${person.enabled}"></td>
+            </tr>
+        </table>
+    </div>
+
+        <div class="table-orderHistory">
+            <table >
+                <tr>
+                    <th>ID</th>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>Dieta</th>
+                    <th>Cena</th>
+                    <th>Data zamówienia</th>
+                </tr>
+                <tr th:each="oH : ${orderHistory}">
+                    <td th:text="${oH.food.price}"></td>
+                    <td th:text="${oH.food.getNameDisplay}"></td>
+                    <td th:text="${oH.localDateTime}"></td>
+                </tr>
+
+
+
+            </table>
+        </div>
+
+
 
         <div id="messages-panel">
             WIADOMOSCI
