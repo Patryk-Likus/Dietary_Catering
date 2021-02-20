@@ -3,10 +3,8 @@ package com.Dietary_Catering.Starter.DB.Repository;
 import com.Dietary_Catering.Starter.DB.Food;
 import com.Dietary_Catering.Starter.DB.OrderHistory;
 import com.Dietary_Catering.Starter.DB.Person;
-
 import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
+
 
 public interface UserRepository {
 
@@ -22,4 +20,6 @@ public interface UserRepository {
 
 
     void saveOrderHistory(OrderHistory orderHistory);
+
+    Collection<OrderHistory> getAllOrderHistory();
 }

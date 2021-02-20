@@ -1,9 +1,6 @@
 package com.Dietary_Catering.Starter.DB;
 
-import org.hibernate.validator.constraints.Length;
-
 import javax.persistence.*;
-import javax.validation.constraints.Size;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -16,7 +13,7 @@ public class Food {
     private int id;
 
     @Column
-    private String name;
+    private String nameDiet;
 
     @Column
     private String imgLink;
@@ -34,9 +31,9 @@ public class Food {
     Set<OrderHistory> orderHistory = new HashSet<OrderHistory>();
 
 
-    public Food(String name, String nameDisplay, int price, String description) {
-        this.name = name;
-        this.imgLink = name + ".png";
+    public Food(String nameDiet, String nameDisplay, int price, String description) {
+        this.nameDiet = nameDiet;
+        this.imgLink = nameDiet + ".png";
         this.nameDisplay = nameDisplay;
         this.price = price;
         this.description = description;
@@ -57,11 +54,11 @@ public class Food {
     }
 
     public String getName() {
-        return name;
+        return nameDiet;
     }
 
     public void setName(String name) {
-        this.name = name;
+        this.nameDiet = nameDiet;
     }
 
     public String getImgLink() {
@@ -94,5 +91,18 @@ public class Food {
 
     public void setDescription(String description) {
         this.description = description;
+    }
+
+    @Override
+    public String toString() {
+        return "Food{" +
+                "id=" + id +
+                ", nameDiet='" + nameDiet + '\'' +
+                ", imgLink='" + imgLink + '\'' +
+                ", nameDisplay='" + nameDisplay + '\'' +
+                ", price=" + price +
+                ", description='" + description + '\'' +
+                ", orderHistory=" + orderHistory +
+                '}';
     }
 }

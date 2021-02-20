@@ -40,8 +40,8 @@ UserService userService;
 //            userService.savefood(f);
 //        }
 
-        Person person = userService.getPersonById(89);
-        Food food = userService.getFoodById(101);
+        Person person = userService.getPersonById(87);
+        Food food = userService.getFoodById(99);
         userService.saveOrderHistory(new OrderHistory(person, food));
 
         return "diets";
@@ -80,14 +80,20 @@ UserService userService;
 
     @GetMapping("/admin")
     public String adminPage(Model model){
+        List<OrderHistory> list = userService.getAllOrderHistory();
         model.addAttribute("foodList", FoodFactory.getFoodList());
         model.addAttribute("personsList", userService.getPersons());
+        model.addAttribute("orderHistory", list);
+        for(OrderHistory o: list) {
+            System.out.println(o.getLocalDateTime());
+        }
         return "admin";
     }
 
     @GetMapping("/user_panel")
     public String afterLogin(Model model){
         model.addAttribute("foodList", FoodFactory.getFoodList());
+
         return "/user_panel";
     }
 
