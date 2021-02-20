@@ -2,6 +2,7 @@ package com.Dietary_Catering.Starter.Controller;
 
 import com.Dietary_Catering.Starter.DB.ContactForm;
 import com.Dietary_Catering.Starter.DB.Food;
+import com.Dietary_Catering.Starter.DB.OrderHistory;
 import com.Dietary_Catering.Starter.DB.Person;
 import com.Dietary_Catering.Starter.Factory.FoodFactory;
 import com.Dietary_Catering.Starter.Services.UserService;
@@ -38,6 +39,10 @@ UserService userService;
 //        for (Food f : foodList) {
 //            userService.savefood(f);
 //        }
+
+        Person person = userService.getPersonById(90);
+        Food food = userService.getFoodById(100);
+        userService.saveOrderHistory(new OrderHistory(person, food));
 
         return "diets";
     }

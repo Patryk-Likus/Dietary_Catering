@@ -3,6 +3,9 @@ package com.Dietary_Catering.Starter.DB;
 import org.hibernate.validator.constraints.Length;
 
 import javax.persistence.*;
+import javax.validation.constraints.Size;
+import java.util.HashSet;
+import java.util.Set;
 
 @Entity
 public class Food {
@@ -26,6 +29,9 @@ public class Food {
 
     @Column(length = 500)
     private String description;
+
+    @OneToMany(mappedBy = "food")
+    Set<OrderHistory> orderHistory = new HashSet<OrderHistory>();
 
 
     public Food(String name, String nameDisplay, int price, String description) {

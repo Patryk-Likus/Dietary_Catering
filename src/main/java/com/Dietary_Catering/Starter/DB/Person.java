@@ -2,6 +2,7 @@ package com.Dietary_Catering.Starter.DB;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import java.util.Set;
 
 
 @Entity
@@ -47,7 +48,8 @@ public class Person {
     @Column
     private boolean enabled = true;
 
-
+    @OneToMany(mappedBy="person")
+    Set<OrderHistory> orderHistory;
 
     public Person() {
     }
