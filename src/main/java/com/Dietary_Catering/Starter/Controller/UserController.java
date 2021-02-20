@@ -33,15 +33,20 @@ UserService userService;
 
     @GetMapping("/diets")
     public String dietsPage(Model model) {
+
         model.addAttribute("foodList", userService.getFoodList());
 //        List<Food> foodList = FoodFactory.getFoodList();
 
-//        for (Food f : foodList) {
-//            userService.savefood(f);
-//        }
 
-        Person person = userService.getPersonById(48);
-        Food food = userService.getFoodById(37);
+       /* for (Food f : foodList) {
+            userService.savefood(f);
+        }*/
+
+
+
+
+        Person person = userService.getPersonById(6);
+        Food food = userService.getFoodById(7);
 
         userService.saveOrderHistory(new OrderHistory(person, food));
 
@@ -75,7 +80,8 @@ UserService userService;
     @PostMapping("/kontakt")
     public String WyslijKontakt(@ModelAttribute ContactForm contactForm){
         System.out.println(contactForm);
-        return "index";
+        userService.createContactForm(contactForm);
+        return "redirect:/kontakt";
 
     }
 

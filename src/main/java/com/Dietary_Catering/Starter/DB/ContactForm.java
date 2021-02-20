@@ -1,10 +1,25 @@
 package com.Dietary_Catering.Starter.DB;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
+@Entity
 public class ContactForm {
 
-    private String name, surname, email, message;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private int id;
+
+    @Column
+    private String name;
+
+    @Column
+    private String surname;
+
+    @Column
+    private String email;
+
+    @Column
+    private String message;
 
     public ContactForm() {
     }

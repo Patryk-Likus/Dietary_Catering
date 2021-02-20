@@ -13,7 +13,9 @@ public class Food {
     private int id;
 
     @Column
+
     private String nameDiet;
+
 
     @Column
     private String imgLink;
@@ -31,9 +33,11 @@ public class Food {
     Set<OrderHistory> orderHistory = new HashSet<OrderHistory>();
 
 
+
     public Food(String nameDiet, String nameDisplay, int price, String description) {
         this.nameDiet = nameDiet;
         this.imgLink = nameDiet + ".png";
+
         this.nameDisplay = nameDisplay;
         this.price = price;
         this.description = description;
@@ -53,12 +57,14 @@ public class Food {
         this.id = id;
     }
 
+
     public String getNameDiet() {
         return nameDiet;
     }
 
     public void setNameDiet(String name) {
         this.nameDiet = nameDiet;
+
     }
 
     public String getImgLink() {

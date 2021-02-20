@@ -1,5 +1,6 @@
 package com.Dietary_Catering.Starter.DB.Repository;
 
+import com.Dietary_Catering.Starter.DB.ContactForm;
 import com.Dietary_Catering.Starter.DB.Food;
 import com.Dietary_Catering.Starter.DB.OrderHistory;
 import com.Dietary_Catering.Starter.DB.Person;
@@ -49,6 +50,7 @@ public class DbUserRepository implements UserRepository {
         em.persist(orderHistory);
     }
 
+<<<<<<< HEAD
     @Override
     public Collection<OrderHistory> getAllOrderHistory() {
         return em.createQuery("from OrderHistory", OrderHistory.class).getResultList();
@@ -58,6 +60,23 @@ public class DbUserRepository implements UserRepository {
 //    public void createFood(Food food) {
 //        em.persist(food);
 //    }
+=======
+    //do Formularza
+    @Transactional
+    public void createForm(ContactForm contactForm) {
+        em.persist(contactForm);
+    }
+
+    @Transactional
+    public ContactForm getContactForm(int id) {
+        return em.createQuery("from ContactForm where id=:id", ContactForm.class).setParameter("id", id).getSingleResult();
+    }
+
+    /*@Transactional
+    public void createFood(Food food) {
+        em.persist(food);
+    }*/
+>>>>>>> dead443... dane z formularza do bazy
 
 
 
