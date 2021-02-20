@@ -11,8 +11,6 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Collection;
-import java.util.List;
-import java.util.Optional;
 
 @Repository
 public class DbUserRepository implements UserRepository {
@@ -37,6 +35,10 @@ public class DbUserRepository implements UserRepository {
         return em.createQuery("from Person where id=:id", Person.class).setParameter("id", id).getSingleResult();
     }
 
+    @Transactional
+    public Person getPersonByLogin(String login) {
+        return em.createQuery("from Person where login=:login", Person.class).setParameter("login", login).getSingleResult();
+    }
 
     @Transactional
     public void saveOrderHistory(OrderHistory orderHistory) {

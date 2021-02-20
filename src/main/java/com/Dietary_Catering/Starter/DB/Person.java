@@ -2,6 +2,7 @@ package com.Dietary_Catering.Starter.DB;
 
 import javax.persistence.*;
 import javax.validation.constraints.Email;
+import javax.validation.constraints.Size;
 import java.util.Set;
 
 
@@ -18,9 +19,11 @@ public class Person {
 
 
     @Column
+    @Size(min=2, max=20)
     private String surname;
 
     @Column
+    @Email
     private String email;
 
 

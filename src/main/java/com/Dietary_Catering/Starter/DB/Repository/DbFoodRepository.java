@@ -36,7 +36,6 @@ public class DbFoodRepository implements FoodRepository {
         em.remove(searchFood);
     }
 
-
     @Transactional
     public Food getFoodById(int id) {
         return em.createQuery("from Food where id=:id", Food.class).setParameter("id", id).getSingleResult();

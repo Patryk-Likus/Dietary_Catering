@@ -34,7 +34,6 @@ public class UserService {
     }
 
 
-
     public void saveOrderHistory(OrderHistory orderHistory) {
         userRepository.saveOrderHistory(orderHistory);
     }
@@ -51,6 +50,10 @@ public class UserService {
 
     public List<ContactForm> getAllContactForms(){
        return new ArrayList<>(userRepository.getAllContactForms());
+    }
+
+    public Person getPersonByLogin(String login){
+        return userRepository.getPersonByLogin(login);
     }
 }
 
