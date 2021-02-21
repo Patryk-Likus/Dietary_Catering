@@ -7,6 +7,7 @@ import com.Dietary_Catering.Starter.DB.Food;
 import com.Dietary_Catering.Starter.DB.OrderHistory;
 import com.Dietary_Catering.Starter.DB.Person;
 import com.Dietary_Catering.Starter.Services.FoodService;
+import com.Dietary_Catering.Starter.Services.HistoryService;
 import com.Dietary_Catering.Starter.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -28,6 +29,9 @@ public class UserController {
 
     @Autowired
     private SingUpMailer mailer;
+
+    @Autowired
+    HistoryService historyService;
 
     @Autowired
     UserAuthentication userAuthentication;
@@ -131,6 +135,16 @@ public class UserController {
     public String showCart(Model model) {
         model.addAttribute("foodList", listFood);
         return "cart";
+    }
+    @GetMapping("order")
+    public String order() {
+        String login = (String) userAuthentication.getUserName();
+        Person person = userService.getPersonByLogin(login);
+        for(Food food: listFood){
+            historyService.saveOrderHistory(new OrderHistory(person, food));
+        }
+        listFood.clear();
+        return "order";
     }
 
 }

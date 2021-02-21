@@ -69,24 +69,7 @@
 </header>
 
 <main>
-    <div class="shop-headline">
-        <h2>Twój wybór diet</h2>
-    </div>
-    <div class="shop-container">
-        <div th:each="food : ${foodList}" class="shopContent-outer">
-            <img th:src="'images/food_img/' + ${food.getImgLink()}" alt="brak zdjęcia" class="shopContentImg">
-            <div class="shopContent">
-                <span class="shopContentName">Dieta</span><br>
-                <span th:text="${food.getNameDisplay()}" class="shopContentName"></span><br>
-                <div class="tooltip">Więcej info
-                    <span th:text="${food.getDescription()}" class="tooltiptext"></span>
-                </div>
-                <p th:text="${food.getPrice()} + ' zł'"></p><br>
-                <a th:href="${'/diets/cart/delete?id='+ {#ids.seq('')}}" class="button-shopContent-delete">Anuluj</a>
-            </div>
-        </div>
-    </div>
-    <a th:href="${'/order'}" class="button-shopContent">Zamów</a>
+    <span>Zamówiono pomyślnie</span>
 </main>
 
 <footer class="footer-core">
