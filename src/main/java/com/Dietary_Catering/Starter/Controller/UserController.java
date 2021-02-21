@@ -52,12 +52,12 @@ public class UserController {
        /* for (Food f : foodList) {   // <- zmienia foodfactory do DataBase
             foodService.savefood(f);
         }*/
+
 /*
         Person person = userService.getPersonById(48);
         Food food = foodService.getFoodById(37);
 
         userService.saveOrderHistory(new OrderHistory(person, food));*/
-
         return "diets";
     }
 

@@ -7,15 +7,6 @@
     width: 20%;
 }
 
-table, th, td {
-    border: 1px solid black;
-    border-collapse: collapse;
-}
-
-table td {
-    padding: 1vh 1vw;
-}
-
 #admin-buttons {
     margin-bottom: 3vh;
     padding: 2vh 0;
@@ -47,3 +38,59 @@ table td {
 
 }
 
+.admin-table-container {
+    margin: 20px 80px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.admin-table {
+    border-collapse: collapse;
+    font-size: 0.9rem;
+    text-align: left;
+
+}
+
+.admin-table tr th {
+    background-color: #45a049;
+    color: white;
+    font-weight: bold;
+    padding: 10px 14px;
+    /*border: #45a049 solid 1px;*/
+
+}
+
+.admin-table tr {
+    border-bottom: #45a049 solid 1px;
+
+}
+
+.admin-table tr:nth-of-type(even) {
+    background-color: #fffada;
+
+}
+
+
+.admin-table td {
+    padding: 10px 14px;
+
+}
+
+
+.update-button {
+    text-decoration: none;
+    background-color: #4CAF50;
+    color: white;
+    padding: 7px 16px;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+    float: left;
+}
+
+.update-button:hover {
+    background-color: #45a049;
+    transition: all 0.2s ease 0s;
+
+}

@@ -1,5 +1,6 @@
 package com.Dietary_Catering.Starter.DB.Repository;
 
+import com.Dietary_Catering.Starter.DB.ContactForm;
 import com.Dietary_Catering.Starter.DB.Food;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -40,5 +41,7 @@ public class DbFoodRepository implements FoodRepository {
     public Food getFoodById(int id) {
         return em.createQuery("from Food where id=:id", Food.class).setParameter("id", id).getSingleResult();
     }
+
+
 
 }

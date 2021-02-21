@@ -20,7 +20,10 @@ public interface UserRepository {
 
     Person getPersonByLogin(String login);
 
-    void saveOrderHistory(OrderHistory orderHistory);
+    void updateContact(ContactForm contactForm);
 
-    Collection<OrderHistory> getAllOrderHistory();
+    void deleteContact(ContactForm contactForm);
+
+    ContactForm getContactById(int id);
+
 }

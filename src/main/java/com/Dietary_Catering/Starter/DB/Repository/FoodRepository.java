@@ -1,5 +1,6 @@
 package com.Dietary_Catering.Starter.DB.Repository;
 
+import com.Dietary_Catering.Starter.DB.ContactForm;
 import com.Dietary_Catering.Starter.DB.Food;
 
 import java.util.Collection;
@@ -15,5 +16,6 @@ public interface FoodRepository {
     void deleteFood(Food food);
 
     Food getFoodById(int id);
+
 
 }
