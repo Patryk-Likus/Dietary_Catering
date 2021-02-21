@@ -30,7 +30,6 @@ public class OrderHistory {
     public OrderHistory(Person person, Food food) {
         this.person = person;
         this.food = food;
-
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm");
         LocalDateTime dateTime = LocalDateTime.now();
         this.localDateTime = dateTime.format(formatter);

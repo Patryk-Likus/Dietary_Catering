@@ -1,7 +1,9 @@
 package com.Dietary_Catering.Starter.Controller;
 
 import com.Dietary_Catering.Starter.DB.Food;
+import com.Dietary_Catering.Starter.DB.OrderHistory;
 import com.Dietary_Catering.Starter.Services.FoodService;
+import com.Dietary_Catering.Starter.Services.HistoryService;
 import com.Dietary_Catering.Starter.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -20,13 +22,16 @@ public class AdminController {
     @Autowired
     private FoodService foodService;
 
+    @Autowired
+    private HistoryService historyService;
+
 
     @GetMapping("/admin")
     public String adminPage(Model model) {
 
         model.addAttribute("foodList", foodService.getFoodList());
         model.addAttribute("personsList", userService.getPersons());
-        model.addAttribute("orderHistory", userService.getAllOrderHistory());
+        model.addAttribute("orderHistory", historyService.getAllOrderHistory());
         model.addAttribute("contactList", userService.getAllContactForms());
         return "admin";
     }
@@ -63,10 +68,11 @@ public class AdminController {
         return "redirect:/admin";
     }
 
-//    @PostMapping("/deleteFood")
-//    public String deleteFood(@ModelAttribute("food") Food food){
-//        foodService.deleteFood(food);
-//        return "redirect:/admin";
-//    }
+    @GetMapping("/deleteOrderHistory/{id}")
+    public String deleteOrderHistory(@PathVariable(value = "id") int id, Model model){
+        OrderHistory orderHistory = historyService.getHistoryByID(id);
+        historyService.deleteHistory(orderHistory);
+        return "redirect:/admin";
+    }
 
 }

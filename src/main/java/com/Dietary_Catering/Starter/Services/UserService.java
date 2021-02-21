@@ -5,6 +5,7 @@ import com.Dietary_Catering.Starter.DB.Food;
 import com.Dietary_Catering.Starter.DB.OrderHistory;
 import com.Dietary_Catering.Starter.DB.Person;
 import com.Dietary_Catering.Starter.DB.Repository.FoodRepository;
+import com.Dietary_Catering.Starter.DB.Repository.HistoryRepository;
 import com.Dietary_Catering.Starter.DB.Repository.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -28,14 +29,6 @@ public class UserService {
 
     public Person getPersonById(int id){
        return userRepository.getPersonById(id);
-    }
-
-    public void saveOrderHistory(OrderHistory orderHistory) {
-        userRepository.saveOrderHistory(orderHistory);
-    }
-
-   public List<OrderHistory> getAllOrderHistory() {
-        return new ArrayList<>(userRepository.getAllOrderHistory());
     }
 
     public void createContactForm(ContactForm contactForm){

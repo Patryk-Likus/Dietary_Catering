@@ -20,7 +20,5 @@ public interface UserRepository {
 
     Person getPersonByLogin(String login);
 
-    void saveOrderHistory(OrderHistory orderHistory);
 
-    Collection<OrderHistory> getAllOrderHistory();
 }

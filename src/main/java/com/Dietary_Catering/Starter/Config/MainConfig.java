@@ -1,6 +1,7 @@
 package com.Dietary_Catering.Starter.Config;
 
 import com.Dietary_Catering.Starter.DB.Repository.DbFoodRepository;
+import com.Dietary_Catering.Starter.DB.Repository.DbHistoryRepository;
 import com.Dietary_Catering.Starter.DB.Repository.DbUserRepository;
 import com.Dietary_Catering.Starter.DB.Repository.UserRepository;
 import org.springframework.context.annotation.Bean;
@@ -20,6 +21,14 @@ public class MainConfig {
     @Profile("prod")
     public DbFoodRepository createDBFoodRepo() {
         DbFoodRepository repo = new DbFoodRepository();
+        return repo;
+    }
+
+
+    @Bean(name="DbHistoryRepository")
+    @Profile("prod")
+    public DbHistoryRepository createDBHistoryRepo() {
+        DbHistoryRepository repo = new DbHistoryRepository();
         return repo;
     }
 

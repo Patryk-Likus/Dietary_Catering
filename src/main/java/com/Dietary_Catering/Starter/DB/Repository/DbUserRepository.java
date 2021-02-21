@@ -40,16 +40,7 @@ public class DbUserRepository implements UserRepository {
         return em.createQuery("from Person where login=:login", Person.class).setParameter("login", login).getSingleResult();
     }
 
-    @Transactional
-    public void saveOrderHistory(OrderHistory orderHistory) {
-        em.persist(orderHistory);
-    }
 
-
-    @Override
-    public Collection<OrderHistory> getAllOrderHistory() {
-        return em.createQuery("from OrderHistory", OrderHistory.class).getResultList();
-    }
 
     //do Formularza
     @Transactional
@@ -60,6 +51,12 @@ public class DbUserRepository implements UserRepository {
     @Transactional
     public Collection<ContactForm> getAllContactForms() {
         return em.createQuery("from ContactForm", ContactForm.class).getResultList();
+    }
+
+    @Transactional
+    public void deleteHistory(OrderHistory orderHistory) {
+        OrderHistory searchHistory = em.find(OrderHistory.class, orderHistory.getId());
+        em.remove(searchHistory);
     }
 
 
