@@ -44,8 +44,8 @@
                         <img src="images/user-drop.png" alt="Login" class="user-drop-img">
                     </button>
                     <div class="dropdown-content">
-<!--                        <div class="header">-->
-<!--                        </div>-->
+                        <!--                        <div class="header">-->
+                        <!--                        </div>-->
                         <div class="row">
                             <div class="column">
                                 <a sec:authorize="!isAuthenticated()" href="login">Logowanie</a>
@@ -70,7 +70,7 @@
 
 <main>
     <div class="shop-headline">
-        <h2>Poznaj nasze diety!</h2>
+        <h2>Twój wybór diet</h2>
     </div>
     <div class="shop-container">
         <div th:each="food : ${foodList}" class="shopContent-outer">
@@ -82,10 +82,9 @@
                     <span th:text="${food.getDescription()}" class="tooltiptext"></span>
                 </div>
                 <p th:text="${food.getPrice()} + ' zł'"></p><br>
-                <a sec:authorize="isAuthenticated()" th:href="${'/diets/cart?id='+food.id}" class="button-shopContent">Zamów</a>
+                <a th:href="${'/diets/cart/delete?id='+ {#ids.seq('')}}" class="button-shopContent-delete">Anuluj</a>
             </div>
         </div>
-
     </div>
 </main>
 

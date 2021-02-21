@@ -13,6 +13,10 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.function.Predicate;
+
 @Controller
 public class UserController {
 
@@ -27,6 +31,8 @@ public class UserController {
 
     @Autowired
     UserAuthentication userAuthentication;
+
+    ArrayList<Food> listFood = new ArrayList<Food>();
 
 
     @RequestMapping
@@ -46,11 +52,11 @@ public class UserController {
        /* for (Food f : foodList) {   // <- zmienia foodfactory do DataBase
             foodService.savefood(f);
         }*/
-
+/*
         Person person = userService.getPersonById(48);
         Food food = foodService.getFoodById(37);
 
-        userService.saveOrderHistory(new OrderHistory(person, food));
+        userService.saveOrderHistory(new OrderHistory(person, food));*/
 
         return "diets";
     }
@@ -68,17 +74,18 @@ public class UserController {
 
     @PostMapping("/registry")
     public String createPerson(@ModelAttribute Person person) {
-        System.out.println(person);
         userService.createPerson(person);
+        mailer.sendMessage(person.getEmail(), "Rejestracja Katering Dietetyczny", "Witaj " + person.getName() + ".\n"
+                + "Dziękujemy za założenie konta w naszym serwisie internetowym do zamawiania diet.");
         return "redirect:/login";
     }
 
     @GetMapping("/kontakt")
     public String KontaktForm(Model model) {
         model.addAttribute("contact", new ContactForm());
-        String login = (String) userAuthentication.getUserName();
+        /*String login = (String) userAuthentication.getUserName();
         System.out.println(login);
-        System.out.println(userService.getPersonByLogin(login));
+        System.out.println(userService.getPersonByLogin(login));*/
         return "kontakt";
     }
 
@@ -86,7 +93,6 @@ public class UserController {
     public String WyslijKontakt(@ModelAttribute ContactForm contactForm) {
         System.out.println(contactForm);
         userService.createContactForm(contactForm);
-
         return "redirect:/kontakt";
 
     }
@@ -100,13 +106,31 @@ public class UserController {
 
     @RequestMapping(value = "/login", method = RequestMethod.GET)
     public String login() {
-            return "login";
-        }
-
-        @RequestMapping(value = "/send_mail", method = RequestMethod.GET)
-        public String sendMail () {
-            mailer.sendMessage("kdietetyczny@gmail.com", "Temat maila", "Dzień dobry");
-            return "index";
-        }
-
+        return "login";
     }
+
+    @RequestMapping("/diets/cart")
+    public String showCart(@RequestParam("id") Integer id, Model model) {
+        Food food = foodService.getFoodById(id);
+        listFood.add(food);
+        return "redirect:/diets";
+    }
+
+    @RequestMapping("/diets/cart/delete")
+    public String deleteCart(@RequestParam("id") int id, Model model) {
+        listFood.remove(id - 1);
+        return "redirect:/cart";
+    }
+
+    @RequestMapping(value = "/send_mail", method = RequestMethod.GET)
+    public String sendMail() {
+        return "index";
+    }
+
+    @GetMapping("cart")
+    public String showCart(Model model) {
+        model.addAttribute("foodList", listFood);
+        return "cart";
+    }
+
+}
