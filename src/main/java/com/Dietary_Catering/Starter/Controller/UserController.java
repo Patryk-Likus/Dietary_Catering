@@ -48,9 +48,9 @@ public class UserController {
             foodService.savefood(f);
         }*/
 
-        Person person = userService.getPersonById(48);
+/*        Person person = userService.getPersonById(48);
         Food food = foodService.getFoodById(37);
-        userService.saveOrderHistory(new OrderHistory(person, food));
+        userService.saveOrderHistory(new OrderHistory(person, food));*/
 
 
         return "diets";
