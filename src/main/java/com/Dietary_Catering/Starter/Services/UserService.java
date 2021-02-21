@@ -49,6 +49,20 @@ public class UserService {
     public Person getPersonByLogin(String login){
         return userRepository.getPersonByLogin(login);
     }
+
+    public void updateContact(ContactForm contactForm) {
+        userRepository.updateContact(contactForm);
+    }
+
+    public void deleteContact(ContactForm contactForm) {
+        userRepository.deleteContact(contactForm);
+    }
+
+    public ContactForm getContactById(int id) {
+        return userRepository.getContactById(id);
+    }
+
+
 }
 
 

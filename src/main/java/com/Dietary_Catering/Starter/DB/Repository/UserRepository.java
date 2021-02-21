@@ -23,4 +23,9 @@ public interface UserRepository {
     void saveOrderHistory(OrderHistory orderHistory);
 
     Collection<OrderHistory> getAllOrderHistory();
+
+    void updateContact(ContactForm contactForm);
+
+    void deleteContact(ContactForm contactForm);
+    ContactForm getContactById(int id);
 }

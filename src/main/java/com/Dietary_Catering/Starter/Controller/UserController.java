@@ -47,8 +47,8 @@ public class UserController {
             foodService.savefood(f);
         }*/
 
-        Person person = userService.getPersonById(48);
-        Food food = foodService.getFoodById(37);
+        Person person = userService.getPersonById(6);
+        Food food = foodService.getFoodById(7);
 
         userService.saveOrderHistory(new OrderHistory(person, food));
 
@@ -76,9 +76,9 @@ public class UserController {
     @GetMapping("/kontakt")
     public String KontaktForm(Model model) {
         model.addAttribute("contact", new ContactForm());
-        String login = (String) userAuthentication.getUserName();
-        System.out.println(login);
-        System.out.println(userService.getPersonByLogin(login));
+       // String login = (String) userAuthentication.getUserName();
+       // System.out.println(login);
+      //  System.out.println(userService.getPersonByLogin(login));
         return "kontakt";
     }
 

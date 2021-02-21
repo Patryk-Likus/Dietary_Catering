@@ -247,6 +247,7 @@
                     <th>Nazwisko</th>
                     <th>Email</th>
                     <th>Wiadomość</th>
+                    <th>Akcje</th>
                 </tr>
                 <tr th:each="contact : ${contactList}">
                     <td th:text="${contact.id}"></td>
@@ -254,6 +255,8 @@
                     <td th:text="${contact.surname}"></td>
                     <td th:text="${contact.email}"></td>
                     <td th:text="${contact.message}"></td>
+                    <td><a th:href="@{/admin/showUpdateContact/{id}(id=${contact.id})}">Update</a>
+                        <a th:href="@{/deleteContact/{id}(id=${contact.id})}">Delete</a></td>
                 </tr>
             </table>
         </div>
