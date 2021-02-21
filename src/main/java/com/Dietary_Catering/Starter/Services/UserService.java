@@ -18,12 +18,9 @@ public class UserService {
     @Autowired
     UserRepository userRepository;
 
-
-
     public void createPerson(Person person){
         userRepository.createUser(person);
     }
-
 
     public List<Person> getPersons() {
         return new ArrayList<>(userRepository.getAllPersons());
@@ -33,16 +30,13 @@ public class UserService {
        return userRepository.getPersonById(id);
     }
 
-
     public void saveOrderHistory(OrderHistory orderHistory) {
         userRepository.saveOrderHistory(orderHistory);
     }
 
-
    public List<OrderHistory> getAllOrderHistory() {
         return new ArrayList<>(userRepository.getAllOrderHistory());
     }
-
 
     public void createContactForm(ContactForm contactForm){
         userRepository.createForm(contactForm);

@@ -24,8 +24,10 @@
 }
 
 .mainPanel-img {
-    width: 30%;
-    height: auto;
+    width: auto;
+    height: 10%;
+    max-height: 70vh;
+    max-width: 50%;
     border-radius: 5%;
     margin: 20px;
 }
