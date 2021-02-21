@@ -81,6 +81,9 @@ public class UserController {
         userService.createPerson(person);
         mailer.sendMessage(person.getEmail(), "Rejestracja Katering Dietetyczny", "Witaj " + person.getName() + ".\n"
                 + "Dziękujemy za założenie konta w naszym serwisie internetowym do zamawiania diet.");
+
+        mailer.sendMessage("kdietetyczny@gmail.com", "Nowy użytkownik w bazie", "Imię: " + "" + person.getName() + "\n" +
+                        "Nazwisko: " + "" + person.getSurname() + "\n" + "Login: " + "" + person.getLogin());
         return "redirect:/login";
     }
 
@@ -138,11 +141,14 @@ public class UserController {
     }
     @GetMapping("order")
     public String order() {
+        String allFood = "";
         String login = (String) userAuthentication.getUserName();
         Person person = userService.getPersonByLogin(login);
         for(Food food: listFood){
+            allFood +=  " " + food.toString1() + "\n";
             historyService.saveOrderHistory(new OrderHistory(person, food));
         }
+        mailer.sendMessage("kdietetyczny@gmail.com", "Zamówienie użytkownika " + person.getLogin(), "Zamówione diety: \n" + allFood);
         listFood.clear();
         return "order";
     }

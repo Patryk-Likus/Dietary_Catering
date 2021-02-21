@@ -27,8 +27,8 @@ public class Food {
     @Column(length = 500)
     private String description;
 
-    @OneToMany(mappedBy = "food")
-    Set<OrderHistory> orderHistory = new HashSet<OrderHistory>();
+    /*@OneToMany(mappedBy = "food")
+    Set<OrderHistory> orderHistory = new HashSet<OrderHistory>();*/
 
 
 
@@ -102,8 +102,11 @@ public class Food {
                 ", imgLink='" + imgLink + '\'' +
                 ", nameDisplay='" + nameDisplay + '\'' +
                 ", price=" + price +
-                ", description='" + description + '\'' +
-                ", orderHistory=" + orderHistory +
+                ", description='" + description + '\''+
                 '}';
+    }
+
+    public String toString1() {
+        return String.format("Produkt o id:%d \n Nazwa diety: %s \n Cena: %s", id, nameDisplay, price);
     }
 }
