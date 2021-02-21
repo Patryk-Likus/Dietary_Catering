@@ -13,7 +13,6 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-
 @Controller
 public class UserController {
 
@@ -51,8 +50,6 @@ public class UserController {
         Person person = userService.getPersonById(48);
         Food food = foodService.getFoodById(37);
         userService.saveOrderHistory(new OrderHistory(person, food));
-
-
         return "diets";
     }
 
