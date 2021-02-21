@@ -1,5 +1,6 @@
 package com.Dietary_Catering.Starter.Controller;
 
+import com.Dietary_Catering.Starter.DB.ContactForm;
 import com.Dietary_Catering.Starter.DB.Food;
 import com.Dietary_Catering.Starter.DB.OrderHistory;
 import com.Dietary_Catering.Starter.Services.FoodService;
@@ -72,6 +73,27 @@ public class AdminController {
     public String deleteOrderHistory(@PathVariable(value = "id") int id, Model model){
         OrderHistory orderHistory = historyService.getHistoryByID(id);
         historyService.deleteHistory(orderHistory);
+        return "redirect:/admin";
+    }
+
+    //kontakt form
+    @GetMapping("/admin/showUpdateContact/{id}")
+    public String showUpdateContact(@PathVariable(value = "id") int id, Model model){
+        ContactForm contactForm = userService.getContactById(id);
+        model.addAttribute("contact", contactForm);
+        return "update_kontakt";
+    }
+
+    @PostMapping("/updateContact")
+    public String updateContact(@ModelAttribute("contact")ContactForm contactForm){
+        userService.updateContact(contactForm);
+        return "redirect:/admin";
+    }
+
+    @GetMapping("/deleteContact/{id}")
+    public String deleteContact(@PathVariable(value = "id") int id, Model model){
+        ContactForm contactForm = userService.getContactById(id);
+        userService.deleteContact(contactForm);
         return "redirect:/admin";
     }
 

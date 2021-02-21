@@ -54,10 +54,19 @@ public class DbUserRepository implements UserRepository {
     }
 
     @Transactional
-    public void deleteHistory(OrderHistory orderHistory) {
-        OrderHistory searchHistory = em.find(OrderHistory.class, orderHistory.getId());
-        em.remove(searchHistory);
+    public void updateContact(ContactForm contactForm) {
+        em.merge(contactForm);
     }
 
+    @Transactional
+    public void deleteContact(ContactForm contactForm) {
+        ContactForm searchContact = em.find(ContactForm.class, contactForm.getId());
+        em.remove(searchContact);
+    }
+
+    @Transactional
+    public ContactForm getContactById(int id) {
+        return em.createQuery("from ContactForm where id=:id", ContactForm.class).setParameter("id", id).getSingleResult();
+    }
 
 }

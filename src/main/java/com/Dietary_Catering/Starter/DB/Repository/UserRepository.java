@@ -20,5 +20,10 @@ public interface UserRepository {
 
     Person getPersonByLogin(String login);
 
+    void updateContact(ContactForm contactForm);
+
+    void deleteContact(ContactForm contactForm);
+
+    ContactForm getContactById(int id);
 
 }
