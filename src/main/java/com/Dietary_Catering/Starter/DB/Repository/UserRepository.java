@@ -26,4 +26,6 @@ public interface UserRepository {
 
     ContactForm getContactById(int id);
 
+    Person getPersonByConfirmationToken(String token);
+
 }

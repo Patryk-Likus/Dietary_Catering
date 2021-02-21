@@ -69,4 +69,9 @@ public class DbUserRepository implements UserRepository {
         return em.createQuery("from ContactForm where id=:id", ContactForm.class).setParameter("id", id).getSingleResult();
     }
 
+    @Transactional
+    public Person getPersonByConfirmationToken(String token) {
+        return em.createQuery("from Person where confirmationToken=:confirmationToken", Person.class).setParameter("confirmationToken", token).getSingleResult();
+    }
+
 }

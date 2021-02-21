@@ -1,5 +1,6 @@
 package com.Dietary_Catering.Starter.Controller;
 
+import com.Dietary_Catering.Starter.Config.RandomTokenFactory;
 import com.Dietary_Catering.Starter.Config.SingUpMailer;
 import com.Dietary_Catering.Starter.Config.UserAuthentication;
 import com.Dietary_Catering.Starter.DB.ContactForm;
@@ -13,10 +14,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
-
 import java.util.ArrayList;
-import java.util.List;
-import java.util.function.Predicate;
+import java.util.Optional;
+
 
 @Controller
 public class UserController {
@@ -38,6 +38,7 @@ public class UserController {
 
     ArrayList<Food> listFood = new ArrayList<Food>();
 
+    private static final int TOKEN_LENGHT = 15;
 
     @RequestMapping
     public String mainPage() {
@@ -78,21 +79,16 @@ public class UserController {
 
     @PostMapping("/registry")
     public String createPerson(@ModelAttribute Person person) {
+        String token = RandomTokenFactory.getRandomString(TOKEN_LENGHT);
+        person.setConfirmationToken(token);
+        mailer.sendConfirmationLink(person.getEmail(), token);
         userService.createPerson(person);
-        mailer.sendMessage(person.getEmail(), "Rejestracja Katering Dietetyczny", "Witaj " + person.getName() + ".\n"
-                + "Dziękujemy za założenie konta w naszym serwisie internetowym do zamawiania diet.");
-
-        mailer.sendMessage("kdietetyczny@gmail.com", "Nowy użytkownik w bazie", "Imię: " + "" + person.getName() + "\n" +
-                        "Nazwisko: " + "" + person.getSurname() + "\n" + "Login: " + "" + person.getLogin());
         return "redirect:/login";
     }
 
     @GetMapping("/kontakt")
     public String KontaktForm(Model model) {
         model.addAttribute("contact", new ContactForm());
-        /*String login = (String) userAuthentication.getUserName();
-        System.out.println(login);
-        System.out.println(userService.getPersonByLogin(login));*/
         return "kontakt";
     }
 
@@ -153,4 +149,21 @@ public class UserController {
         return "order";
     }
 
+    @RequestMapping("/confirm_email")
+    public String confirmEmail(@RequestParam(name="token") String token){
+        Person person = userService.getPersonByToken(token);
+        if(!person.equals(null)){
+            person.setEnabled(true);
+            userService.createPerson(person);
+            mailer.sendMessage(person.getEmail(), "Rejestracja Katering Dietetyczny", "Witaj " + person.getName() + ".\n"
+                    + "Dziękujemy za założenie konta w naszym serwisie internetowym do zamawiania diet.");
+
+            mailer.sendMessage("kdietetyczny@gmail.com", "Nowy użytkownik w bazie", "Imię: " + "" + person.getName() + "\n" +
+                    "Nazwisko: " + "" + person.getSurname() + "\n" + "Login: " + "" + person.getLogin());
+            return "login";
+        }
+        else{
+            return "Nie ma takiego tokena";
+        }
+    }
 }

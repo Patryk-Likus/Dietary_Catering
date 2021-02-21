@@ -48,8 +48,11 @@ public class Person {
     @Column
     private String role = "USER";
 
+    @Column(columnDefinition = "boolean default false")
+    private boolean enabled;
+
     @Column
-    private boolean enabled = true;
+    private String confirmationToken;
 
     @OneToMany(mappedBy="person")
     Set<OrderHistory> orderHistory;
@@ -67,7 +70,7 @@ public class Person {
         this.postCode = postCode;
         this.login = login;
         this.password = password;
-
+        this.enabled = false;
     }
 
 
@@ -161,6 +164,14 @@ public class Person {
 
     public void setEnabled(boolean enabled) {
         this.enabled = enabled;
+    }
+
+    public String getConfirmationToken() {
+        return confirmationToken;
+    }
+
+    public void setConfirmationToken(String confirmationToken) {
+        this.confirmationToken = confirmationToken;
     }
 
     @Override

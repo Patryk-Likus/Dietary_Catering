@@ -55,6 +55,9 @@ public class UserService {
         return userRepository.getContactById(id);
     }
 
+    public Person getPersonByToken(String token){
+      return userRepository.getPersonByConfirmationToken(token);
+    }
 
 }
 
