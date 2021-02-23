@@ -113,3 +113,15 @@
     visibility: visible;
     opacity: 1;
 }
+
+
+.shop-select {
+    padding: 0;
+    font-size: 0.7rem;
+    height: 14%;
+    width: 50%;
+}
+
+shop-select-content {
+    display: flex;
+}

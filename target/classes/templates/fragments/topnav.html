@@ -1,0 +1,54 @@
+<header th:fragment="navbar">
+    <div class="top-bar">
+        <div class="div-top-bar">
+            <img class="img-top" th:src="@{'/images/free.png'}">
+            <label class="top-label">Darmowa dostawa</label>
+        </div>
+        <div class="div-top-bar">
+            <img class="img-top" th:src="@{'/images/calendar.png'}">
+            <label class="top-label">Natychmiastowa realizacja</label>
+        </div>
+        <div class="div-top-bar">
+            <img class="img-top" th:src="@{'/images/car.png'}">
+            <label class="top-label">Dowóz autochłodniami</label>
+        </div>
+
+    </div>
+
+    <nav class="nav-bar">
+
+        <ul class="nav-links">
+            <!--        <li><a href="index" target="blank">Strona Główna</a></li>-->
+            <li><a href="diets" target="blank">Diety</a></li>
+            <li><a href="price-list" target="blank">Cennik</a></li>
+        </ul>
+        <a href="index" target="blank"><img src="images/logo.png" alt="Logo" class="logo-img"></a>
+        <ul class="nav-links">
+            <li><a href="kontakt" target="blank" onclick="handleHttp()">Kontakt</a></li>
+            <li>
+
+                <div class="dropdown">
+                    <button class="dropbtn">
+                        <img src="images/user-drop.png" alt="Login" class="user-drop-img">
+                    </button>
+                    <div class="dropdown-content">
+
+                        <div class="row">
+                            <div class="column">
+                                <a sec:authorize="!isAuthenticated()" href="login">Logowanie</a>
+                                <a sec:authorize="!isAuthenticated()" href="registry">Rejestracja</a>
+                                <a sec:authorize="isAuthenticated()" href="#">Ustawienia</a>
+                                <a sec:authorize="isAuthenticated()" href="cart">Koszyk</a>
+                                <a sec:authorize="isAuthenticated()" href="#">Historia</a>
+                                <a sec:authorize="hasAuthority('ADMIN')" class="" href="/admin">Admin panel</a>
+                                <form sec:authorize="isAuthenticated()" action="#" th:action="@{/logout}" method="post">
+                                    <input type="submit" value="Wyloguj"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </li>
+        </ul>
+    </nav>
+</header>
