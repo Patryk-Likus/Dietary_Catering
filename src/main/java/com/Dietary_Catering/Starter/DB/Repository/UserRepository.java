@@ -5,6 +5,7 @@ import com.Dietary_Catering.Starter.DB.OrderHistory;
 import com.Dietary_Catering.Starter.DB.Person;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface UserRepository {
 
@@ -27,5 +28,7 @@ public interface UserRepository {
     ContactForm getContactById(int id);
 
     Person getPersonByConfirmationToken(String token);
+
+     List<Person> getPersonByLoginList(String login);
 
 }

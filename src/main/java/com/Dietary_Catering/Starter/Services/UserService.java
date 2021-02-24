@@ -59,6 +59,10 @@ public class UserService {
       return userRepository.getPersonByConfirmationToken(token);
     }
 
+    public List<Person> getPersonByLoginList(String login){
+      return userRepository.getPersonByLoginList(login);
+    }
+
 }
 
 
