@@ -8,61 +8,61 @@
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
-
-<header th:replace="fragments/topnav.html :: navbar"></header>
-
-
-<main>
+<div class="flex-wrapper">
+    <header th:replace="fragments/topnav.html :: navbar"></header>
 
 
-    <div class="shop-headline">
-        <h2>Poznaj nasze diety!</h2>
-    </div>
-    <div class="shop-container">
-        <div th:each="food : ${foodList}" class="shopContent-outer">
-            <img th:src="'images/food_img/' + ${food.getImgLink()}" alt="brak zdjęcia" class="shopContentImg">
-            <div class="shopContent">
-                <span class="shopContentName">Dieta</span><br>
-                <span th:text="${food.getNameDisplay()}" class="shopContentName"></span><br>
-                <div class="tooltip">Więcej info
-                    <span th:text="${food.getDescription()}" class="tooltiptext"></span>
+    <main>
+
+
+        <div class="shop-headline">
+            <h2>Poznaj nasze diety!</h2>
+        </div>
+        <div class="shop-container">
+            <div th:each="food : ${foodList}" class="shopContent-outer">
+                <img th:src="'images/food_img/' + ${food.getImgLink()}" alt="brak zdjęcia" class="shopContentImg">
+                <div class="shopContent">
+                    <span class="shopContentName">Dieta</span><br>
+                    <span th:text="${food.getNameDisplay()}" class="shopContentName"></span><br>
+                    <div class="tooltip">Więcej info
+                        <span th:text="${food.getDescription()}" class="tooltiptext"></span>
+                    </div>
+                    <br>
+                    <div class="shop-select-content">
+                        <select class="shop-select" id="comboA" onchange="getComboA(this)">
+                            <option value="57">1000 kcal</option>
+                            <option value="58">1250 kcal</option>
+                            <option value="59" selected>1500 kcal</option>
+                            <option value="60">1750 kcal</option>
+                            <option value="61">2000 kcal</option>
+                            <option value="63">2500 kcal</option>
+                        </select>
+                        <span th:id="demo"></span>
+                        <!--                    <span th:text="${food.getPrice()} + ' zł'"></span>-->
+                    </div>
+                    <br>
+                    <a sec:authorize="isAuthenticated()" th:href="${'/diets/cart?id='+food.id}"
+                       class="button-shopContent">Zamów</a>
                 </div>
-                <br>
-                <div class="shop-select-content">
-                    <!--                    <select class="shop-select" id="comboA" onchange="getComboA(this)">-->
-                    <!--                        <option value="57">1000 kcal</option>-->
-                    <!--                        <option value="58">1250 kcal</option>-->
-                    <!--                        <option value="59" selected>1500 kcal</option>-->
-                    <!--                        <option value="60">1750 kcal</option>-->
-                    <!--                        <option value="61">2000 kcal</option>-->
-                    <!--                        <option value="63">2500 kcal</option>-->
-                    <!--                    </select>-->
-                    <!--                    <span th:id="demo"></span>-->
-                    <span th:text="${food.getPrice()} + ' zł'"></span>
-                </div>
-                <br>
-                <a sec:authorize="isAuthenticated()" th:href="${'/diets/cart?id='+food.id}" class="button-shopContent">Zamów</a>
             </div>
+
         </div>
 
-    </div>
 
+    </main>
 
-</main>
+    <footer th:replace="fragments/footer.html :: footer"></footer>
 
-
-<footer th:replace="fragments/footer.html :: footer"></footer>
-
-
+</div>
 </body>
-<!--<script th:inline="javascript" th:each="food : ${foodList}">-->
-<!--    function getComboA(selectObject) {-->
+<script th:inline="javascript" th:each="food : ${foodList}">
+    function getComboA(selectObject) {
 
-<!--        var value = selectObject.value;-->
-<!--        document.getElementById("demo").innerHTML = value;-->
-<!--        document.get("demo").innerHTML = value;-->
-<!--        console.log(value);-->
-<!--    }-->
-<!--</script>-->
+        var value = selectObject.value;
+        document.getElementById("demo").innerHTML = value;
+        document.get("demo").innerHTML = value;
+        console.log(value);
+    }
+</script>
 </html>
 

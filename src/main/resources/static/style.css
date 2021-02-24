@@ -9,6 +9,16 @@ body {
     background-color: #fffaeb;
     display: block;
 }
+header {
+    border-bottom: solid #9b9b9b 1px;
+}
+
+.flex-wrapper {
+    display: flex;
+    min-height: 100vh;
+    flex-direction: column;
+    justify-content: space-between
+}
 
 /* === NAV BAR === */
 
@@ -55,6 +65,7 @@ body {
 
 .header {
     margin: 0.5rem 1rem;
+
     /*border: #009D80 solid;*/
     /*border-top-right-radius: 30%;*/
     /*background-color: #009D80;*/
@@ -204,7 +215,6 @@ vertical-align: middle;
 }
 
 main {
-    border-top: solid #9b9b9b 1px;
     min-height: 100%;
 
 }
@@ -363,6 +373,8 @@ input[type=submit]:hover {
     font-style: italic;
     font-weight: bold;
 }
+
+
 
 .error-field{
     color: red;

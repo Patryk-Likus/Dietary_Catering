@@ -10,62 +10,62 @@
 
 </head>
 <body>
+<div class="flex-wrapper">
 
-<header th:replace="fragments/topnav.html :: navbar"></header>
+    <header th:replace="fragments/topnav.html :: navbar"></header>
 
-<main>
-    <div class="oddzial">
-        NASZE ODDZIAŁY:
-        <div class="miasto"> TORUŃ</div>
-        <div> T: +48 555-555-555, <br>
-            E: <a href="kontakt@catering.pl" class="link">kdietetyczny@gmail.com</a>
-        </div>
-        <br>
-
-        <div class="miasto"> Lublin</div>
-        <div> T: +48 323-321-431, <br>
-            E: <a href="kontakt2@catering.pl" class="link">kdietetyczny@gmail.com</a>
-        </div>
-
-    </div>
-
-    <div class="form-registry">
-        <br>
-        <label class="login">Kontakt</label><br><br>
-        <form action="#" th:object="${contact}" th:action="@{/kontakt}" th:method="post">
-            <div>
-            <label>Imię</label>
-            <input type="text" th:field="*{name}"/>
-            <p class="error-field" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/>
+    <main>
+        <div class="oddzial">
+            NASZE ODDZIAŁY:
+            <div class="miasto"> TORUŃ</div>
+            <div> T: +48 555-555-555, <br>
+                E: <a href="kontakt@catering.pl" class="link">kdietetyczny@gmail.com</a>
             </div>
-            <div>
-            <label>Nazwisko</label>
-            <input type="text" th:field="*{surname}"/><br>
-            <p class="error-field" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"/>
-            </div>
-            <div>
-            <label>Email</label>
-            <input type="email" th:field="*{email}"/><br>
-           <p class="error-field" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"/>
-            </div>
-            <div>
-            <label>Wiadomość</label>
-            <textarea th:field="*{message}" id="subject" name="subject" placeholder="Write something.."
-                      style="height:200px"/>
             <br>
-            <p class="error-field" th:if="${#fields.hasErrors('message')}" th:errors="*{message}"/>
+
+            <div class="miasto"> Lublin</div>
+            <div> T: +48 323-321-431, <br>
+                E: <a href="kontakt2@catering.pl" class="link">kdietetyczny@gmail.com</a>
             </div>
-            <div>
-            <br><input type="submit" value="Wyślij">
-            </div>
-        </form>
-    </div>
-</main>
 
-<footer>
+        </div>
 
-</footer>
+        <div class="form-registry">
+            <br>
+            <label class="login">Kontakt</label><br><br>
+            <form action="#" th:object="${contact}" th:action="@{/kontakt}" th:method="post">
+                <div>
+                    <label>Imię</label>
+                    <input type="text" th:field="*{name}"/>
+                    <p class="error-field" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/>
+                </div>
+                <div>
+                    <label>Nazwisko</label>
+                    <input type="text" th:field="*{surname}"/><br>
+                    <p class="error-field" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"/>
+                </div>
+                <div>
+                    <label>Email</label>
+                    <input type="email" th:field="*{email}"/><br>
+                    <p class="error-field" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"/>
+                </div>
+                <div>
+                    <label>Wiadomość</label>
+                    <textarea th:field="*{message}" id="subject" name="subject" placeholder="Write something.."
+                              style="height:200px"/>
+                    <br>
+                    <p class="error-field" th:if="${#fields.hasErrors('message')}" th:errors="*{message}"/>
+                </div>
+                <div>
+                    <br><input type="submit" value="Wyślij">
+                </div>
+            </form>
+        </div>
+    </main>
+
+    <footer th:replace="fragments/footer.html :: footer"></footer>
 
 
+</div>
 </body>
 </html>

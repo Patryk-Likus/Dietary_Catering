@@ -4,37 +4,50 @@
     <meta charset="UTF-8">
     <title>Dietary Catering</title>
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="shop-content-style.css">
+    <link rel="stylesheet" href="cart-content-style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
 </head>
 <body>
+<div class="flex-wrapper">
 
-<header th:replace="fragments/topnav.html :: navbar"></header>
+    <header th:replace="fragments/topnav.html :: navbar"></header>
 
 
-<main>
-    <div class="shop-headline">
-        <h2>Twój wybór diet</h2>
-    </div>
-    <div class="shop-container">
-        <div th:each="food : ${foodList}" class="shopContent-outer">
-            <img th:src="'images/food_img/' + ${food.getImgLink()}" alt="brak zdjęcia" class="shopContentImg">
-            <div class="shopContent">
-                <span class="shopContentName">Dieta</span><br>
-                <span th:text="${food.getNameDisplay()}" class="shopContentName"></span><br>
-                <div class="tooltip">Więcej info
+    <main>
+        <div class="cart-headline">
+            <h2>Koszyk</h2>
+        </div>
+        <div class="cart-container">
+            <div th:each="food : ${foodList}" class="cartContent-outer">
+                <img th:src="'images/food_img/' + ${food.getImgLink()}" alt="brak zdjęcia" class="cartContentImg">
+                <div class="cartContent">
+                    <!--                    <span class="cartContentName"></span>-->
+                    <span th:text="'Dieta '+ ${food.getNameDisplay()}" class="cartContentName"></span>
+                    <!--                    <div class="tooltip">-->
                     <span th:text="${food.getDescription()}" class="tooltiptext"></span>
+                    <!--                    </div>-->
+                    <p th:text="${food.getPrice()} + ' zł'" class="cartPrice"></p>
+                    <a th:href="${'/diets/cart/delete?id='+ {#ids.seq('')}}"
+                       class="button-cartContent redButton">Usuń</a>
                 </div>
-                <p th:text="${food.getPrice()} + ' zł'"></p><br>
-                <a th:href="${'/diets/cart/delete?id='+ {#ids.seq('')}}" class="button-shopContent-delete">Anuluj</a>
+            </div>
+
+            <div class="cartSummary">
+                <h3>Podsumowanie</h3>
+                <p>
+                    <span th:text="${summary}"></span><span> zł</span>
+                </p>
+                <div>
+                    <a th:href="${'/order'}" class="button-cartContent">Zamów</a>
+                    <a th:href="${'/cancel'}" class="button-cartContent redButton">Anuluj</a>
+                </div>
             </div>
         </div>
-    </div>
-    <a th:href="${'/order'}" class="button-shopContent">Zamów</a>
-</main>
 
-<footer th:replace="fragments/footer.html :: footer"></footer>
+    </main>
 
+    <footer th:replace="fragments/footer.html :: footer"></footer>
+</div>
 </body>
 </html>
 

@@ -17,9 +17,7 @@ import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
-import javax.validation.constraints.Null;
 import java.util.ArrayList;
-import java.util.Optional;
 
 
 @Controller
@@ -72,9 +70,9 @@ public class UserController {
         return "diets";
     }
 
-    @GetMapping("/price-list")
-    public String priceList(Model model) {
-        return "price-list";
+    @GetMapping("/about")
+    public String aboutPage(Model model) {
+        return "about";
     }
 
     @GetMapping("/registry")
@@ -161,6 +159,11 @@ public class UserController {
     @GetMapping("cart")
     public String showCart(Model model) {
         model.addAttribute("foodList", listFood);
+        int summaryPrice = 0;
+        for (int i = 0; i < listFood.size() ; i++){
+            summaryPrice += listFood.get(i).getPrice();
+        }
+        model.addAttribute("summary", summaryPrice);
         return "cart";
     }
 
@@ -176,6 +179,12 @@ public class UserController {
         mailer.sendMessage("kdietetyczny@gmail.com", "Zamówienie użytkownika " + person.getLogin(), "Zamówione diety: \n" + allFood);
         listFood.clear();
         return "order";
+    }
+
+    @GetMapping("cancel")
+    public String cancel(){
+        listFood.clear();
+        return "redirect:/cart";
     }
 
     @RequestMapping("/confirm_email")
