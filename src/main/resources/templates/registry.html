@@ -17,32 +17,32 @@
             <form action="#" th:action="@{/registry}" method="post">
                 <label>Imię</label>
                 <input type="text" th:field="${person.name}"><br><br>
-                <p th:if="${#fields.hasErrors('person.name')}" th:errors="*{person.name}"/>
+                <p class="error-field" th:if="${#fields.hasErrors('person.name')}" th:errors="*{person.name}"/>
                 <label>Nazwisko</label>
                 <input type="text" th:field="${person.surname}"><br>
-                <p th:if="${#fields.hasErrors('person.surname')}" th:errors="*{person.surname}"/>
+                <p class="error-field" th:if="${#fields.hasErrors('person.surname')}" th:errors="*{person.surname}"/>
                 <label>Email</label>
                 <input type="email" th:field="${person.email}"><br>
-                <p th:if="${#fields.hasErrors('person.email')}" th:errors="*{person.email}"/>
+                <p class="error-field" th:if="${#fields.hasErrors('person.email')}" th:errors="*{person.email}"/>
                 <label>Numer telefonu</label>
                 <input type="text"  th:field="${person.phoneNumber}"><br>
-                <p th:if="${#fields.hasErrors('person.phoneNumber')}" th:errors="*{person.phoneNumber}"/>
+                <p class="error-field" th:if="${#fields.hasErrors('person.phoneNumber')}" th:errors="*{person.phoneNumber}"/>
                 <label>Miasto</label>
                 <input type="text"  th:field="${person.city}"><br>
-                <p th:if="${#fields.hasErrors('person.city')}" th:errors="*{person.city}"/>
+                <p class="error-field" th:if="${#fields.hasErrors('person.city')}" th:errors="*{person.city}"/>
                 <label>Ulica i numer budynku</label>
                 <input type="text" th:field="${person.streetAndNumber}"><br>
-                <p th:if="${#fields.hasErrors('person.streetAndNumber')}" th:errors="*{person.streetAndNumber}"/>
+                <p class="error-field" th:if="${#fields.hasErrors('person.streetAndNumber')}" th:errors="*{person.streetAndNumber}"/>
                 <label>Kod pocztowy</label>
                 <input type="text" th:field="${person.postCode}"><br>
-                <p th:if="${#fields.hasErrors('person.postCode')}" th:errors="*{person.postCode}"/>
+                <p class="error-field" th:if="${#fields.hasErrors('person.postCode')}" th:errors="*{person.postCode}"/>
                 <label>Login</label>
                 <input type="text" th:field="${person.login}"><br>
-                <p th:text="${busyLogin}"></p>
-                <p th:if="${#fields.hasErrors('person.login')}" th:errors="*{person.login}"/>
+                <p class="error-field" th:text="${busyLogin}"></p>
+                <p class="error-field" th:if="${#fields.hasErrors('person.login')}" th:errors="*{person.login}"/>
                 <label>Hasło</label>
                 <input type="password" th:field="${person.password}"><br>
-                <p th:if="${#fields.hasErrors('person.password')}" th:errors="*{person.password}"/>
+                <p class="error-field" th:if="${#fields.hasErrors('person.password')}" th:errors="*{person.password}"/>
                 <br><input type="submit" value="Załóż konto">
             </form>
         </div>

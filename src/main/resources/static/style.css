@@ -363,3 +363,8 @@ input[type=submit]:hover {
     font-style: italic;
     font-weight: bold;
 }
+
+.error-field{
+    color: red;
+    font-size: 12px;
+}

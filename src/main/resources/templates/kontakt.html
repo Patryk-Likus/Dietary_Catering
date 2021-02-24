@@ -36,24 +36,24 @@
             <div>
             <label>Imię</label>
             <input type="text" th:field="*{name}"/>
-            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/>
+            <p class="error-field" th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/>
             </div>
             <div>
             <label>Nazwisko</label>
             <input type="text" th:field="*{surname}"/><br>
-            <p th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"/>
+            <p class="error-field" th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"/>
             </div>
             <div>
             <label>Email</label>
             <input type="email" th:field="*{email}"/><br>
-           <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"/>
+           <p class="error-field" th:if="${#fields.hasErrors('email')}" th:errors="*{email}"/>
             </div>
             <div>
             <label>Wiadomość</label>
             <textarea th:field="*{message}" id="subject" name="subject" placeholder="Write something.."
                       style="height:200px"/>
             <br>
-            <p th:if="${#fields.hasErrors('message')}" th:errors="*{message}"/>
+            <p class="error-field" th:if="${#fields.hasErrors('message')}" th:errors="*{message}"/>
             </div>
             <div>
             <br><input type="submit" value="Wyślij">
