@@ -6,6 +6,8 @@
     <link rel="stylesheet" href="style.css">
     <link rel="stylesheet" href="index-style.css">
     <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+
+
 </head>
 <body>
 
@@ -30,19 +32,32 @@
     <div class="form-registry">
         <br>
         <label class="login">Kontakt</label><br><br>
-        <form action="#" th:action="@{/kontakt}" method="post">
+        <form action="#" th:object="${contact}" th:action="@{/kontakt}" th:method="post">
+            <div>
             <label>Imię</label>
-            <input type="text" th:field="${contact.name}"><br><br>
+            <input type="text" th:field="*{name}"/>
+            <p th:if="${#fields.hasErrors('name')}" th:errors="*{name}"/>
+            </div>
+            <div>
             <label>Nazwisko</label>
-            <input type="text" th:field="${contact.surname}"><br>
+            <input type="text" th:field="*{surname}"/><br>
+            <p th:if="${#fields.hasErrors('surname')}" th:errors="*{surname}"/>
+            </div>
+            <div>
             <label>Email</label>
-            <input type="email" th:field="${contact.email}"><br>
+            <input type="email" th:field="*{email}"/><br>
+           <p th:if="${#fields.hasErrors('email')}" th:errors="*{email}"/>
+            </div>
+            <div>
             <label>Wiadomość</label>
-            <textarea th:field="${contact.message}" id="subject" name="subject" placeholder="Write something.."
-                      style="height:200px"></textarea>
+            <textarea th:field="*{message}" id="subject" name="subject" placeholder="Write something.."
+                      style="height:200px"/>
             <br>
-
+            <p th:if="${#fields.hasErrors('message')}" th:errors="*{message}"/>
+            </div>
+            <div>
             <br><input type="submit" value="Wyślij">
+            </div>
         </form>
     </div>
 </main>

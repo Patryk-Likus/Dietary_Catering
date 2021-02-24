@@ -13,7 +13,11 @@ import com.Dietary_Catering.Starter.Services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
+
+import javax.validation.Valid;
+import javax.validation.constraints.Null;
 import java.util.ArrayList;
 import java.util.Optional;
 
@@ -39,6 +43,8 @@ public class UserController {
     ArrayList<Food> listFood = new ArrayList<Food>();
 
     private static final int TOKEN_LENGHT = 15;
+
+    private static String busyLogin = "Podany login jest już zajęty";
 
     @RequestMapping
     public String mainPage() {
@@ -78,12 +84,26 @@ public class UserController {
     }
 
     @PostMapping("/registry")
-    public String createPerson(@ModelAttribute Person person) {
-        String token = RandomTokenFactory.getRandomString(TOKEN_LENGHT);
-        person.setConfirmationToken(token);
-        mailer.sendConfirmationLink(person.getEmail(), token);
-        userService.createPerson(person);
-        return "redirect:/login";
+    public String createPerson(@Valid @ModelAttribute("person") Person person, BindingResult bindingResult, Model model) {
+        Person foundPerson = userService.getPersonByLogin(person.getLogin());
+        if(!(foundPerson == null)){
+            model.addAttribute("busyLogin", busyLogin);
+            return "registry";
+        }
+        else if (bindingResult.hasErrors()) {
+            System.out.println("error");
+            bindingResult.getAllErrors().forEach(error -> {
+                        System.out.println(error.getObjectName() + " " + error.getDefaultMessage());
+                    }
+            );
+            return "registry";
+        } else {
+            String token = RandomTokenFactory.getRandomString(TOKEN_LENGHT);
+            person.setConfirmationToken(token);
+            mailer.sendConfirmationLink(person.getEmail(), token);
+            userService.createPerson(person);
+            return "redirect:/login";
+        }
     }
 
     @GetMapping("/kontakt")
@@ -92,12 +112,20 @@ public class UserController {
         return "kontakt";
     }
 
-    @PostMapping("/kontakt")
-    public String WyslijKontakt(@ModelAttribute ContactForm contactForm) {
-        System.out.println(contactForm);
-        userService.createContactForm(contactForm);
-        return "redirect:/kontakt";
+    @RequestMapping(value = "/kontakt", method = RequestMethod.POST)
+    public String WyslijKontakt(@Valid @ModelAttribute("contact") ContactForm contactForm, BindingResult bindingResult) {
 
+        if (bindingResult.hasErrors()) {
+            System.out.println("error");
+            bindingResult.getAllErrors().forEach(error -> {
+                        System.out.println(error.getObjectName() + " " + error.getDefaultMessage());
+                    }
+            );
+            return "kontakt";
+        } else {
+            userService.createContactForm(contactForm);
+            return "index";
+        }
     }
 
     @GetMapping("/user_panel")
@@ -135,13 +163,14 @@ public class UserController {
         model.addAttribute("foodList", listFood);
         return "cart";
     }
+
     @GetMapping("order")
     public String order() {
         String allFood = "";
         String login = (String) userAuthentication.getUserName();
         Person person = userService.getPersonByLogin(login);
-        for(Food food: listFood){
-            allFood +=  " " + food.toString1() + "\n";
+        for (Food food : listFood) {
+            allFood += " " + food.toString1() + "\n";
             historyService.saveOrderHistory(new OrderHistory(person, food));
         }
         mailer.sendMessage("kdietetyczny@gmail.com", "Zamówienie użytkownika " + person.getLogin(), "Zamówione diety: \n" + allFood);
@@ -150,9 +179,9 @@ public class UserController {
     }
 
     @RequestMapping("/confirm_email")
-    public String confirmEmail(@RequestParam(name="token") String token){
+    public String confirmEmail(@RequestParam(name = "token") String token) {
         Person person = userService.getPersonByToken(token);
-        if(!person.equals(null)){
+        if (!person.equals(null)) {
             person.setEnabled(true);
             userService.createPerson(person);
             mailer.sendMessage(person.getEmail(), "Rejestracja Katering Dietetyczny", "Witaj " + person.getName() + ".\n"
@@ -161,8 +190,7 @@ public class UserController {
             mailer.sendMessage("kdietetyczny@gmail.com", "Nowy użytkownik w bazie", "Imię: " + "" + person.getName() + "\n" +
                     "Nazwisko: " + "" + person.getSurname() + "\n" + "Login: " + "" + person.getLogin());
             return "login";
-        }
-        else{
+        } else {
             return "Nie ma takiego tokena";
         }
     }

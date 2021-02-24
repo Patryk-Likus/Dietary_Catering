@@ -15,34 +15,41 @@ public class Person {
 
 
     @Column
+    @Size(min = 2, message = "Imię musi zawierać minimum 2 znaki")
     private String name;
 
 
     @Column
-    @Size(min=2, max=20)
+    @Size(min=2, message = "Nazwisko musi zawierać minimum 2 znaki")
     private String surname;
 
     @Column
     @Email
+    @Size(min = 1, message= "Adres email musi być wypełniony oraz zawierać znak @")
     private String email;
 
-
     @Column
+    @Size(min = 9, message = "Zły numer telefonu - minimum 9 znaków")
     private String phoneNumber;
 
     @Column
+    @Size(min = 2, message = "Podana nazwa ulicy jest zbyt krótka")
     private String streetAndNumber;
 
     @Column
+    @Size(min = 2, message = "Miasto musi zawierać minimum 2 znaki")
     private String city;
 
     @Column
+    @Size(min = 5, message = "Kod pocztowy musi zawierać minimum 5 znaków oraz być oddzielony znakiem '-'")
     private String postCode;
 
     @Column
+    @Size(min = 2, message = "Login musi zawierać minimum 2 znaki")
     private String login;
 
     @Column
+    @Size(min = 1, message = "Uzupełnij pole")
     private String password;
 
     @Column
