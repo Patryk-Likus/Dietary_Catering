@@ -1,8 +1,6 @@
 package com.Dietary_Catering.Starter.Services;
 
-import com.Dietary_Catering.Starter.DB.Food;
 import com.Dietary_Catering.Starter.DB.OrderHistory;
-import com.Dietary_Catering.Starter.DB.Person;
 import com.Dietary_Catering.Starter.DB.Repository.HistoryRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;

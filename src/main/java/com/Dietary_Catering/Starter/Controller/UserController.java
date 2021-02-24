@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.*;
 import javax.validation.Valid;
 import java.util.ArrayList;
 
+import java.util.List;
 
 @Controller
 public class UserController {
@@ -83,12 +84,9 @@ public class UserController {
 
     @PostMapping("/registry")
     public String createPerson(@Valid @ModelAttribute("person") Person person, BindingResult bindingResult, Model model) {
-        Person foundPerson = userService.getPersonByLogin(person.getLogin());
-        if(!(foundPerson == null)){
-            model.addAttribute("busyLogin", busyLogin);
-            return "registry";
-        }
-        else if (bindingResult.hasErrors()) {
+
+
+         if (bindingResult.hasErrors()) {
             System.out.println("error");
             bindingResult.getAllErrors().forEach(error -> {
                         System.out.println(error.getObjectName() + " " + error.getDefaultMessage());
@@ -96,13 +94,29 @@ public class UserController {
             );
             return "registry";
         } else {
-            String token = RandomTokenFactory.getRandomString(TOKEN_LENGHT);
-            person.setConfirmationToken(token);
-            mailer.sendConfirmationLink(person.getEmail(), token);
-            userService.createPerson(person);
-            return "redirect:/login";
+             if (person.getLogin() != null){
+                 List<Person> foundPerson = userService.getPersonByLoginList(person.getLogin());
+                 System.out.println(foundPerson);
+                 if(!foundPerson.isEmpty()){
+                     System.out.println(foundPerson.isEmpty());
+                 model.addAttribute("busyLogin", busyLogin);
+                 return "registry";
+                 }
+                 else{
+                         String token = RandomTokenFactory.getRandomString(TOKEN_LENGHT);
+                         person.setConfirmationToken(token);
+                         mailer.sendConfirmationLink(person.getEmail(), token);
+                         userService.createPerson(person);
+                         return "redirect:/login";
+                 }
+             }
+
         }
+        return "registry";
     }
+
+
+
 
     @GetMapping("/kontakt")
     public String KontaktForm(Model model) {

@@ -1,8 +1,6 @@
 package com.Dietary_Catering.Starter.DB.Repository;
 
 import com.Dietary_Catering.Starter.DB.ContactForm;
-import com.Dietary_Catering.Starter.DB.Food;
-import com.Dietary_Catering.Starter.DB.OrderHistory;
 import com.Dietary_Catering.Starter.DB.Person;
 
 import org.springframework.stereotype.Repository;
@@ -11,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Collection;
+import java.util.List;
 
 @Repository
 public class DbUserRepository implements UserRepository {
@@ -38,6 +37,11 @@ public class DbUserRepository implements UserRepository {
     @Transactional
     public Person getPersonByLogin(String login) {
         return em.createQuery("from Person where login=:login", Person.class).setParameter("login", login).getSingleResult();
+    }
+
+    @Transactional
+    public List<Person> getPersonByLoginList(String login) {
+        return em.createQuery("from Person where login=:login", Person.class).setParameter("login", login).getResultList();
     }
 
 
