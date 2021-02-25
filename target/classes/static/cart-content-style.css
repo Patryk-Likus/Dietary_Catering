@@ -5,6 +5,7 @@
 .cartContent-outer {
     border: #9b9b9b solid 1px;
     border-radius: 20px;
+    padding-right: 1.4rem;
     margin: 1rem 0;
     display: flex;
     background-color: #fffcf2;
@@ -60,7 +61,8 @@
 }
 
 .button-cartContent {
-    margin: 1rem 1rem 1em auto;
+    /*margin: 1rem 1rem 1em auto;*/
+    margin-left: auto;
     text-align: center;
     background-color: #4CAF50;
     color: white;

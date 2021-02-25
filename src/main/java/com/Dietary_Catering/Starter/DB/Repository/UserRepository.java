@@ -17,9 +17,18 @@ public interface UserRepository {
 
     Person getPersonById(int id);
 
-    Collection<ContactForm> getAllContactForms();
+    Person getPersonByConfirmationToken(String token);
+
+    List<Person> getPersonByLoginList(String login);
 
     Person getPersonByLogin(String login);
+
+    void updatePerson(Person person);
+
+    void deletePerson(Person person);
+
+    Collection<ContactForm> getAllContactForms();
+
 
     void updateContact(ContactForm contactForm);
 
@@ -27,8 +36,6 @@ public interface UserRepository {
 
     ContactForm getContactById(int id);
 
-    Person getPersonByConfirmationToken(String token);
 
-     List<Person> getPersonByLoginList(String login);
 
 }

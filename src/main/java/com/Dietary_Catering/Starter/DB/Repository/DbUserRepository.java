@@ -1,6 +1,7 @@
 package com.Dietary_Catering.Starter.DB.Repository;
 
 import com.Dietary_Catering.Starter.DB.ContactForm;
+import com.Dietary_Catering.Starter.DB.Food;
 import com.Dietary_Catering.Starter.DB.Person;
 
 import org.springframework.stereotype.Repository;
@@ -40,11 +41,21 @@ public class DbUserRepository implements UserRepository {
     }
 
     @Transactional
+    public void updatePerson(Person person) {
+        em.merge(person);
+    }
+
+    @Transactional
+    public void deletePerson(Person person) {
+        Person searchPerson = em.find(Person.class, person.getId());
+        em.remove(searchPerson);
+
+    }
+
+    @Transactional
     public List<Person> getPersonByLoginList(String login) {
         return em.createQuery("from Person where login=:login", Person.class).setParameter("login", login).getResultList();
     }
-
-
 
     //do Formularza
     @Transactional

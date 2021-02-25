@@ -116,8 +116,6 @@ public class UserController {
     }
 
 
-
-
     @GetMapping("/kontakt")
     public String KontaktForm(Model model) {
         model.addAttribute("contact", new ContactForm());
@@ -138,6 +136,15 @@ public class UserController {
             userService.createContactForm(contactForm);
             return "index";
         }
+    }
+
+
+    @GetMapping("user_settings")
+    public String userSettings(Model model){
+        String login = (String) userAuthentication.getUserName();
+        Person person = userService.getPersonByLogin(login);
+        model.addAttribute("userName", person.getName());
+        return "/user_settings";
     }
 
     @GetMapping("/user_panel")

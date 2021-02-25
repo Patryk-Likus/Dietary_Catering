@@ -3,6 +3,7 @@ package com.Dietary_Catering.Starter.Controller;
 import com.Dietary_Catering.Starter.DB.ContactForm;
 import com.Dietary_Catering.Starter.DB.Food;
 import com.Dietary_Catering.Starter.DB.OrderHistory;
+import com.Dietary_Catering.Starter.DB.Person;
 import com.Dietary_Catering.Starter.Services.FoodService;
 import com.Dietary_Catering.Starter.Services.HistoryService;
 import com.Dietary_Catering.Starter.Services.UserService;
@@ -94,6 +95,30 @@ public class AdminController {
     public String deleteContact(@PathVariable(value = "id") int id, Model model){
         ContactForm contactForm = userService.getContactById(id);
         userService.deleteContact(contactForm);
+        return "redirect:/admin";
+    }
+
+
+    //user
+    @GetMapping("/admin/showUpdatePerson/{id}")
+    public String showUpdatePerson(@PathVariable(value = "id") int id, Model model){
+        Person person = userService.getPersonById(id);
+        System.out.println(person);
+        System.out.println(id);
+        model.addAttribute("person", person);
+        return "update_person";
+    }
+
+    @PostMapping("/updatePerson")
+    public String updatePerson(@ModelAttribute("person")Person person){
+        userService.updatePerson(person);
+        return "redirect:/admin";
+    }
+
+    @GetMapping("/deletePerson/{id}")
+    public String deletePerson(@PathVariable(value = "id") int id){
+        Person person = userService.getPersonById(id);
+        userService.deletePerson(person);
         return "redirect:/admin";
     }
 

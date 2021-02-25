@@ -57,7 +57,7 @@ public class Person {
     private String password;
 
     @Column
-    private String role = "USER";
+    private String role = "ADMIN";
 
     @Column(columnDefinition = "boolean default false")
     private boolean enabled;

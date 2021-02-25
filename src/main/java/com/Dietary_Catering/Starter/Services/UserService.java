@@ -27,16 +27,34 @@ public class UserService {
        return userRepository.getPersonById(id);
     }
 
+    public Person getPersonByLogin(String login){
+        return userRepository.getPersonByLogin(login);
+    }
+
+    public Person getPersonByToken(String token){
+        return userRepository.getPersonByConfirmationToken(token);
+    }
+
+    public List<Person> getPersonByLoginList(String login){
+        return userRepository.getPersonByLoginList(login);
+    }
+
+    public void updatePerson(Person person){
+        userRepository.updatePerson(person);
+    }
+
+    public void deletePerson(Person person){
+        userRepository.deletePerson(person);
+    }
+
+
+
     public void createContactForm(ContactForm contactForm){
         userRepository.createForm(contactForm);
     }
 
     public List<ContactForm> getAllContactForms(){
        return new ArrayList<>(userRepository.getAllContactForms());
-    }
-
-    public Person getPersonByLogin(String login){
-        return userRepository.getPersonByLogin(login);
     }
 
     public void updateContact(ContactForm contactForm) {
@@ -51,13 +69,7 @@ public class UserService {
         return userRepository.getContactById(id);
     }
 
-    public Person getPersonByToken(String token){
-      return userRepository.getPersonByConfirmationToken(token);
-    }
 
-    public List<Person> getPersonByLoginList(String login){
-      return userRepository.getPersonByLoginList(login);
-    }
 
 }
 
