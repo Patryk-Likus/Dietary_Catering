@@ -33,4 +33,8 @@ public class HistoryService {
     public List<OrderHistory> getAllOrderHistoryByIDList(int id){
         return historyRepository.getOrderHistoryByIdList(id);
     }
+
+    public void deleteOrderHistoryUser(int id){
+        historyRepository.DeleteOrderHistoryByIdList(id);
+    }
 }

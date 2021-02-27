@@ -17,4 +17,6 @@ public interface HistoryRepository {
     OrderHistory getOrderHistoryById(int id);
 
     List<OrderHistory> getOrderHistoryByIdList(int id);
+
+    void DeleteOrderHistoryByIdList(int id);
 }

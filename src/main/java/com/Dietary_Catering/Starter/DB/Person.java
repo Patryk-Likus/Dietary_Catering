@@ -65,8 +65,6 @@ public class Person {
     @Column
     private String confirmationToken;
 
-    @OneToMany(mappedBy="person")
-    Set<OrderHistory> orderHistory;
 
     public Person() {
     }

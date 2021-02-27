@@ -232,7 +232,6 @@ public class UserController {
         String login = (String)userAuthentication.getUserName();
         Person person = userService.getPersonByLogin(login);
         model.addAttribute("historyUser", historyService.getAllOrderHistoryByIDList(person.getId()));
-        System.out.println(historyService.getAllOrderHistoryByIDList(person.getId()));
         return "history";
     }
 }

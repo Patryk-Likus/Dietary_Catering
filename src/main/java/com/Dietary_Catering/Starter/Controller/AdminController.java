@@ -116,6 +116,7 @@ public class AdminController {
     @GetMapping("/deletePerson/{id}")
     public String deletePerson(@PathVariable(value = "id") int id){
         Person person = userService.getPersonById(id);
+        historyService.deleteOrderHistoryUser(person.getId());
         userService.deletePerson(person);
         return "redirect:/admin";
     }

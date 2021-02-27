@@ -44,6 +44,14 @@ public class DbHistoryRepository implements HistoryRepository {
         return em.createQuery("from OrderHistory where person_id=:id", OrderHistory.class).setParameter("id", id).getResultList();
     }
 
+    @Transactional
+    public void DeleteOrderHistoryByIdList(int id) {
+        List<OrderHistory> orderHistoryList = em.createQuery("from OrderHistory where person_id=:id", OrderHistory.class).setParameter("id", id).getResultList();
+        for(OrderHistory o: orderHistoryList){
+            em.remove(o);
+        }
+    }
+
 
 
 }

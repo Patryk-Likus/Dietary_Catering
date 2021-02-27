@@ -11,11 +11,11 @@ public class OrderHistory {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name = "person_id")
     Person person;
 
-    @ManyToOne
+    @ManyToOne()
     @JoinColumn(name  = "food_id")
     Food food;
 
