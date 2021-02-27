@@ -103,14 +103,13 @@ public class AdminController {
     @GetMapping("/admin/showUpdatePerson/{id}")
     public String showUpdatePerson(@PathVariable(value = "id") int id, Model model){
         Person person = userService.getPersonById(id);
-        System.out.println(person);
-        System.out.println(id);
         model.addAttribute("person", person);
         return "update_person";
     }
 
     @PostMapping("/updatePerson")
     public String updatePerson(@ModelAttribute("person")Person person){
+
         userService.updatePerson(person);
         return "redirect:/admin";
     }

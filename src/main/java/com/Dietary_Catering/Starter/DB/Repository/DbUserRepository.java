@@ -43,6 +43,7 @@ public class DbUserRepository implements UserRepository {
     @Transactional
     public void updatePerson(Person person) {
         em.merge(person);
+//        em.m
     }
 
     @Transactional
