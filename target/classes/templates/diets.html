@@ -28,18 +28,18 @@
                         <span th:text="${food.getDescription()}" class="tooltiptext"></span>
                     </div>
                     <br>
-                    <div class="shop-select-content">
-                        <select class="shop-select" id="comboA" onchange="getComboA(this)">
-                            <option value="57">1000 kcal - - 57 zł</option>
-                            <option value="58">1250 kcal - - 58 zł</option>
-                            <option value="59" selected>1500 kcal - - 59 zł</option>
-                            <option value="60">1750 kcal - - 60 zł</option>
-                            <option value="61">2000 kcal - - 61 zł</option>
-                            <option value="63">2500 kcal - - 63 zł</option>
-                        </select>
-                        <span th:id="demo"></span>
-                        <!--                    <span th:text="${food.getPrice()} + ' zł'"></span>-->
-                    </div>
+<!--                    <div class="shop-select-content">-->
+<!--                        <select class="shop-select" id="comboA" onchange="getComboA(this)">-->
+<!--                            <option value="57">1000 kcal - - 57 zł</option>-->
+<!--                            <option value="58">1250 kcal - - 58 zł</option>-->
+<!--                            <option value="59" selected>1500 kcal - - 59 zł</option>-->
+<!--                            <option value="60">1750 kcal - - 60 zł</option>-->
+<!--                            <option value="61">2000 kcal - - 61 zł</option>-->
+<!--                            <option value="63">2500 kcal - - 63 zł</option>-->
+<!--                        </select>-->
+<!--                    </div>-->
+                    <span th:text="${food.getPrice()} + ' zł'"></span>
+                    <br>
                     <br>
                     <a sec:authorize="isAuthenticated()" th:href="${'/diets/cart?id='+food.id}"
                        class="button-shopContent">Zamów</a>

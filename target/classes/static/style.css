@@ -5,6 +5,10 @@
     font-family: 'Poppins', sans-serif;
 }
 
+main {
+    margin-bottom: auto;
+}
+
 body {
     background-color: #fffaeb;
     display: block;

@@ -5,7 +5,7 @@
 .cartContent-outer {
     border: #9b9b9b solid 1px;
     border-radius: 20px;
-    padding-right: 1.4rem;
+    padding: 1.4rem;
     margin: 1rem 0;
     display: flex;
     background-color: #fffcf2;
@@ -13,27 +13,32 @@
 }
 
 .cartContentImg {
-    max-height: 13vh;
-    max-width: 6.4vw;
-    margin: 0.5rem 1rem;
+    max-height: 16vh;
+    max-width: 8vw;
+    margin-bottom: auto;
+    margin-top: auto;
+    margin-left: 1rem;
+    /*margin: 0.5rem 1rem;*/
 }
 
 .cartContent {
     display: flex;
     flex-direction: row;
     align-items: center;
+    width: 100%;
 }
 
 .cartContentName {
     width: 8rem;
-    margin: 2rem;
+    margin-left: auto;
+    margin-right: 3rem;
     /*background-color: bisque;*/
     font-size: 1.2rem;
     font-weight: bold;
 }
 
 .tooltiptext {
-    max-width: 50%;
+    width: 50%;
     /*background-color: bisque;*/
     margin-right: 2rem;
 }
