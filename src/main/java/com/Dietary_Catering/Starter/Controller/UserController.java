@@ -159,6 +159,8 @@ public class UserController {
         return "login";
     }
 
+
+
     @RequestMapping("/diets/cart")
     public String showCart(@RequestParam("id") Integer id, Model model) {
         Food food = foodService.getFoodById(id);
@@ -223,5 +225,14 @@ public class UserController {
         } else {
             return "Nie ma takiego tokena";
         }
+    }
+
+    @GetMapping("/history")
+    public String showHistory(Model model){
+        String login = (String)userAuthentication.getUserName();
+        Person person = userService.getPersonByLogin(login);
+        model.addAttribute("historyUser", historyService.getAllOrderHistoryByIDList(person.getId()));
+        System.out.println(historyService.getAllOrderHistoryByIDList(person.getId()));
+        return "history";
     }
 }

@@ -9,6 +9,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import java.util.Collection;
+import java.util.List;
 
 @Repository
 public class DbHistoryRepository implements HistoryRepository {
@@ -36,6 +37,11 @@ public class DbHistoryRepository implements HistoryRepository {
     @Transactional
     public OrderHistory getOrderHistoryById(int id) {
         return em.createQuery("from OrderHistory where id=:id", OrderHistory.class).setParameter("id", id).getSingleResult();
+    }
+
+    @Transactional
+    public List<OrderHistory> getOrderHistoryByIdList(int id) {
+        return em.createQuery("from OrderHistory where person_id=:id", OrderHistory.class).setParameter("id", id).getResultList();
     }
 
 

@@ -29,4 +29,8 @@ public class HistoryService {
     public List<OrderHistory> getAllOrderHistory() {
         return new ArrayList<>(historyRepository.getAllOrderHistory());
     }
+
+    public List<OrderHistory> getAllOrderHistoryByIDList(int id){
+        return historyRepository.getOrderHistoryByIdList(id);
+    }
 }

@@ -384,3 +384,12 @@ input[type=submit]:hover {
     color: red;
     font-size: 12px;
 }
+
+.order{
+    text-align: center;
+}
+
+.logout-field{
+color: Green;
+    font-size: 15px;
+}

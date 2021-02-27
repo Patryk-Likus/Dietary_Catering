@@ -17,6 +17,8 @@
         <div class="form-login">
             <label class="login">Zaloguj się</label><br><br>
             <form action="/login" method='POST'>
+                <div th:if="${param.error}" class="error-field">Podany login lub hasło jest nieprawidłowe</div>
+                <div th:if="${param.logout}" class="logout-field">Wylogowano pomyślnie</div>
                 <label>Login</label>
                 <input type='text' name="login" value=''><br><br>
                 <label>Hasło</label>

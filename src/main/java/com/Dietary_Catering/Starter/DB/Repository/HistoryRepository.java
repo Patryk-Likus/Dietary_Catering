@@ -4,6 +4,7 @@ import com.Dietary_Catering.Starter.DB.OrderHistory;
 import com.Dietary_Catering.Starter.DB.Person;
 
 import java.util.Collection;
+import java.util.List;
 
 public interface HistoryRepository {
 
@@ -14,4 +15,6 @@ public interface HistoryRepository {
     void deleteHistory(OrderHistory orderHistory);
 
     OrderHistory getOrderHistoryById(int id);
+
+    List<OrderHistory> getOrderHistoryByIdList(int id);
 }

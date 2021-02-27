@@ -88,6 +88,7 @@
                     <table class="admin-table">
                         <tr>
                             <th>ID</th>
+                            <th>Login</th>
                             <th>Imię</th>
                             <th>Nazwisko</th>
                             <th>Dieta</th>
@@ -97,6 +98,7 @@
                         </tr>
                         <tr th:each="oH : ${orderHistory}">
                             <td th:text="${oH.id}"></td>
+                            <td th:text="${oH.person.login}"></td>
                             <td th:text="${oH.person.name}"></td>
                             <td th:text="${oH.person.surname}"></td>
                             <td th:text="${oH.food.nameDisplay}"></td>

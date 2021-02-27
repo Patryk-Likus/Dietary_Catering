@@ -1,4 +1,4 @@
-<header th:fragment="navbar">
+<header th:fragment="navbar" xmlns:sec="http://www.w3.org/1999/xhtml" xmlns:th="http://www.w3.org/1999/xhtml">
     <div class="top-bar">
         <div class="div-top-bar">
             <img class="img-top" th:src="@{'/images/free.png'}">
@@ -39,7 +39,7 @@
                                 <a sec:authorize="!isAuthenticated()" href="registry">Rejestracja</a>
                                 <a sec:authorize="isAuthenticated()" href="user_settings">Ustawienia</a>
                                 <a sec:authorize="isAuthenticated()" href="cart">Koszyk</a>
-                                <a sec:authorize="isAuthenticated()" href="#">Historia</a>
+                                <a sec:authorize="isAuthenticated()" href="history">Historia</a>
                                 <a sec:authorize="hasAuthority('ADMIN')" class="" href="/admin">Admin panel</a>
                                 <form sec:authorize="isAuthenticated()" action="#" th:action="@{/logout}" method="post">
                                     <input type="submit" value="Wyloguj"/>
