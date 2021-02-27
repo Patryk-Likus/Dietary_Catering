@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Dietary catering</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="shop-content-style.css">
+    <link rel="stylesheet" href="admin-style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins&display=swap" rel="stylesheet">
+</head>
+<header th:replace="fragments/topnav.html :: navbar"></header>
+<body>
+<div id="history-panel">
+    HISTORIA
+
+    <div class="admin-table-container">
+        <table class="admin-table">
+            <tr>
+                <th>ID</th>
+                <th>Imię</th>
+                <th>Nazwisko</th>
+                <th>Dieta</th>
+                <th>Cena</th>
+                <th>Data zamówienia</th>
+            </tr>
+            <tr th:each="oH : ${historyUser}">
+                <td th:text="${oH.id}"></td>
+                <td th:text="${oH.person.name}"></td>
+                <td th:text="${oH.person.surname}"></td>
+                <td th:text="${oH.food.nameDisplay}"></td>
+                <td th:text="${oH.food.price}"></td>
+                <td th:text="${oH.localDateTime}"></td>
+                </td>
+            </tr>
+
+        </table>
+    </div>
+    <footer th:replace="fragments/footer.html :: footer"></footer>
+</div>
+</body>
+</html>
