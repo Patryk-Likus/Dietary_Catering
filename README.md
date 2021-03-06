@@ -29,9 +29,6 @@ Technology:
 - CSS
 - JavaScript
 
-Authors:
-Patryk Likus, Jakub Czuchanski, Lukasz Stasiak
-
 Below screenshot from the app:
 
 ![photo1](https://user-images.githubusercontent.com/65070389/109415633-1f3e8100-79ba-11eb-9ab3-3e34e5cc02bf.jpg)
