@@ -10,7 +10,7 @@ Functionality:
 - security
 - Adding/deleting a products in a basket
 - Registry panel with validation
-- Email veryfication after user registration
+- Email veryfication after user registration through the auto-generated token
 - Email notivication with ordered diets
 - Logon panel
 - Message form
