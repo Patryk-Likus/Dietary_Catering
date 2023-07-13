@@ -1,20 +1,17 @@
 package com.Dietary_Catering.Starter.Services;
 
-import com.Dietary_Catering.Starter.DB.ContactForm;
 import com.Dietary_Catering.Starter.DB.Food;
 import com.Dietary_Catering.Starter.DB.Repository.FoodRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class FoodService {
-
-    @Autowired
-    FoodRepository foodRepository;
-
+    private final FoodRepository foodRepository;
 
     public List<Food> getFoodList() {
         return new ArrayList<>(foodRepository.getAllFoods());

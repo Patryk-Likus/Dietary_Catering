@@ -19,37 +19,13 @@ import javax.sql.DataSource;
 @EnableWebSecurity
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
-
-
     @Autowired
-    DataSource dataSource;
-
-  /*  @Override
-    protected void configure(HttpSecurity http) throws Exception {
-        http.authorizeRequests()
-                .antMatchers("/").permitAll()
-                .antMatchers("/admin").authenticated().and().formLogin();
-    }
-
-
-    @Autowired
-    public void securityUsers(AuthenticationManagerBuilder auth) throws Exception {
-
-        auth.inMemoryAuthentication().withUser("admin").roles("ADMIN").password("{noop}admin1");
-    }
-
-    @Bean
-    public PasswordEncoder passwordEncoder() {
-        return PasswordEncoderFactories.createDelegatingPasswordEncoder();
-    }*/
-
+    private DataSource dataSource;
 
     @Override
     public void configure(HttpSecurity security) throws Exception {
 
         security.authorizeRequests()
-
-                //.antMatchers("/account").hasAnyAuthority("USER", "ADMIN")
                 .antMatchers("/admin").hasAnyAuthority("ADMIN")
                 .antMatchers("/admin/showNewFoodForm").hasAnyAuthority("ADMIN")
                 .antMatchers("/**").permitAll()
@@ -58,8 +34,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .formLogin().loginPage("/login").usernameParameter("login").passwordParameter("password").defaultSuccessUrl("/diets", true)
                 .and().csrf().disable();
     }
-
-
 
     @Autowired
     public void securityUsers(AuthenticationManagerBuilder auth) throws Exception {
@@ -70,7 +44,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authoritiesByUsernameQuery("SELECT login, role FROM Person WHERE login = ?");
     }
 
-    @SuppressWarnings("deprecation")
+    @Deprecated
     @Bean
     public static NoOpPasswordEncoder passwordEncoder() {
         return (NoOpPasswordEncoder) NoOpPasswordEncoder.getInstance();

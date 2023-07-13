@@ -1,9 +1,22 @@
 package com.Dietary_Catering.Starter.DB;
 
-import javax.persistence.*;
+import lombok.Getter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 
+@Getter
+@ToString
+@Accessors(chain = true)
 @Entity
 public class OrderHistory {
 
@@ -23,10 +36,6 @@ public class OrderHistory {
     String localDateTime;
 
 
-
-    public OrderHistory() {
-    }
-
     public OrderHistory(Person person, Food food) {
         this.person = person;
         this.food = food;
@@ -35,45 +44,7 @@ public class OrderHistory {
         this.localDateTime = dateTime.format(formatter);
     }
 
-    public int getId() {
-        return id;
-    }
+    public OrderHistory() {
 
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public Person getPerson() {
-        return person;
-    }
-
-    public void setPerson(Person person) {
-        this.person = person;
-    }
-
-    public Food getFood() {
-        return food;
-    }
-
-    public void setFood(Food food) {
-        this.food = food;
-    }
-
-    public String getLocalDateTime() {
-        return localDateTime;
-    }
-
-    public void setLocalDateTime(String localDateTime) {
-        this.localDateTime = localDateTime;
-    }
-
-    @Override
-    public String toString() {
-        return "OrderHistory{" +
-                "id=" + id +
-                ", person=" + person +
-                ", food=" + food +
-                ", localDateTime=" + localDateTime +
-                '}';
     }
 }

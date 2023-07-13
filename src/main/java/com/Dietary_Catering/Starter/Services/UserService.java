@@ -3,17 +3,16 @@ package com.Dietary_Catering.Starter.Services;
 import com.Dietary_Catering.Starter.DB.ContactForm;
 import com.Dietary_Catering.Starter.DB.Person;
 import com.Dietary_Catering.Starter.DB.Repository.UserRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class UserService {
-
-    @Autowired
-    UserRepository userRepository;
+    private final UserRepository userRepository;
 
     public void createPerson(Person person){
         userRepository.createUser(person);

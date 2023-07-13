@@ -2,17 +2,16 @@ package com.Dietary_Catering.Starter.Services;
 
 import com.Dietary_Catering.Starter.DB.OrderHistory;
 import com.Dietary_Catering.Starter.DB.Repository.HistoryRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@RequiredArgsConstructor
 public class HistoryService {
-
-    @Autowired
-    HistoryRepository historyRepository;
+    private final HistoryRepository historyRepository;
 
     public void saveOrderHistory(OrderHistory orderHistory) {
         historyRepository.saveOrderHistory(orderHistory);

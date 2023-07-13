@@ -1,15 +1,22 @@
 package com.Dietary_Catering.Starter.DB;
 
-import net.bytebuddy.implementation.bind.annotation.Empty;
+import lombok.Getter;
+import lombok.Setter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
 
-import javax.persistence.*;
-import javax.validation.Valid;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.Email;
-import javax.validation.constraints.Null;
 import javax.validation.constraints.Size;
-import java.util.Set;
 
-
+@Getter
+@Setter
+@ToString
+@Accessors(chain = true)
 @Entity
 public class Person {
 
@@ -64,133 +71,4 @@ public class Person {
 
     @Column
     private String confirmationToken;
-
-
-    public Person() {
-    }
-
-    public Person(String name, String surname, String email, String phoneNumber, String streetAndNumber, String city, String postCode, String login , String password) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.streetAndNumber = streetAndNumber;
-        this.city = city;
-        this.postCode = postCode;
-        this.login = login;
-        this.password = password;
-        this.enabled = false;
-    }
-
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public String getPhoneNumber() {
-        return phoneNumber;
-    }
-
-    public void setPhoneNumber(String phoneNumber) {
-        this.phoneNumber = phoneNumber;
-    }
-
-    public String getStreetAndNumber() {
-        return streetAndNumber;
-    }
-
-    public void setStreetAndNumber(String streetAndNumber) {
-        this.streetAndNumber = streetAndNumber;
-    }
-
-    public String getCity() {
-        return city;
-    }
-
-    public void setCity(String city) {
-        this.city = city;
-    }
-
-    public String getPostCode() {
-        return postCode;
-    }
-
-    public void setPostCode(String postCode) {
-        this.postCode = postCode;
-    }
-
-    public String getLogin() {
-        return login;
-    }
-
-    public void setLogin(String login) {
-        this.login = login;
-    }
-
-    public String getPassword() {
-        return password;
-    }
-
-    public void setPassword(String password) {
-        this.password = password;
-    }
-
-    public String getRole() {
-        return role;
-    }
-
-    public void setRole(String role) {
-        this.role = role;
-    }
-
-    public boolean isEnabled() {
-        return enabled;
-    }
-
-    public void setEnabled(boolean enabled) {
-        this.enabled = enabled;
-    }
-
-    public String getConfirmationToken() {
-        return confirmationToken;
-    }
-
-    public void setConfirmationToken(String confirmationToken) {
-        this.confirmationToken = confirmationToken;
-    }
-
-    @Override
-    public String toString() {
-        return "User{" + "id=" + id + ", name='" + name + '\'' + ", surname='" + surname + '\'' + ", email='" + email + '\'' +
-                ", phoneNumber='" + phoneNumber + '\'' + ", streetAndNumber='" + streetAndNumber + '\'' + ", city='" + city + '\'' + ", " +
-                "postCode='" + postCode + '\'' + ", login='" + login + '\''  + ", password='" + password + '\'' + '}';
-    }
 }

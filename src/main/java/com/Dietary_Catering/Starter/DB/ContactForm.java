@@ -1,10 +1,21 @@
 package com.Dietary_Catering.Starter.DB;
 
-import javax.persistence.*;
+import lombok.Getter;
+import lombok.ToString;
+import lombok.experimental.Accessors;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
+@Getter
+@ToString
+@Accessors(chain = true)
 @Entity
 public class ContactForm {
 
@@ -29,64 +40,4 @@ public class ContactForm {
     @Column
     @Size(min = 1, max = 10, message = "Wiadomość musi mieć minimum 1 znak. (maks. 8000)")
     private String message;
-
-    public ContactForm() {
-    }
-
-    public ContactForm(String name, String surname, String email, String message) {
-        this.name = name;
-        this.surname = surname;
-        this.email = email;
-        this.message = message;
-    }
-
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
-
-    public String getName() {
-        return name;
-    }
-
-    public String getSurname() {
-        return surname;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setName(String name) {
-        this.name = name;
-    }
-
-    public void setSurname(String surname) {
-        this.surname = surname;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    @Override
-    public String toString() {
-        return "ContactForm{" +
-                "name='" + name + '\'' +
-                ", surname='" + surname + '\'' +
-                ", email='" + email + '\'' +
-                ", message='" + message + '\'' +
-                '}';
-    }
 }

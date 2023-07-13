@@ -1,7 +1,6 @@
 package com.Dietary_Catering.Starter.DB.Repository;
 
 import com.Dietary_Catering.Starter.DB.OrderHistory;
-import com.Dietary_Catering.Starter.DB.Person;
 
 import java.util.Collection;
 import java.util.List;

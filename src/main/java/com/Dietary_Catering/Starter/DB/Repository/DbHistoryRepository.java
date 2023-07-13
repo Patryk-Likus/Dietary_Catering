@@ -1,21 +1,19 @@
 package com.Dietary_Catering.Starter.DB.Repository;
 
-import com.Dietary_Catering.Starter.DB.Food;
 import com.Dietary_Catering.Starter.DB.OrderHistory;
-import org.aspectj.weaver.ast.Or;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.Collection;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class DbHistoryRepository implements HistoryRepository {
 
-    @PersistenceContext
-    EntityManager em;
+    private final EntityManager em;
 
     @Transactional
     public void saveOrderHistory(OrderHistory orderHistory) {

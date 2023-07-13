@@ -7,6 +7,7 @@ import com.Dietary_Catering.Starter.DB.ContactForm;
 import com.Dietary_Catering.Starter.DB.Food;
 import com.Dietary_Catering.Starter.DB.OrderHistory;
 import com.Dietary_Catering.Starter.DB.Person;
+import com.Dietary_Catering.Starter.Factory.FoodFactory;
 import com.Dietary_Catering.Starter.Services.FoodService;
 import com.Dietary_Catering.Starter.Services.HistoryService;
 import com.Dietary_Catering.Starter.Services.UserService;
@@ -58,21 +59,11 @@ public class UserController {
     @GetMapping("/diets")
     public String dietsPage(Model model) {
         model.addAttribute("foodList", foodService.getFoodList());
-//        List<Food> foodList = FoodFactory.getFoodList();
-       /* for (Food f : foodList) {   // <- zmienia foodfactory do DataBase
-            foodService.savefood(f);
-        }*/
-
-/*
-        Person person = userService.getPersonById(48);
-        Food food = foodService.getFoodById(37);
-
-        userService.saveOrderHistory(new OrderHistory(person, food));*/
         return "diets";
     }
 
     @GetMapping("/about")
-    public String aboutPage(Model model) {
+    public String aboutPage() {
         return "about";
     }
 
@@ -196,7 +187,7 @@ public class UserController {
         String login = (String) userAuthentication.getUserName();
         Person person = userService.getPersonByLogin(login);
         for (Food food : listFood) {
-            allFood += " " + food.toString1() + "\n";
+            allFood += " " + food.getInfoProduct() + "\n";
             historyService.saveOrderHistory(new OrderHistory(person, food));
         }
         mailer.sendMessage("kdietetyczny@gmail.com", "Zamówienie użytkownika " + person.getLogin(), "Zamówione diety: \n" + allFood);

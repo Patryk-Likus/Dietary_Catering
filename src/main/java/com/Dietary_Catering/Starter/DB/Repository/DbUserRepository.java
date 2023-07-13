@@ -1,22 +1,20 @@
 package com.Dietary_Catering.Starter.DB.Repository;
 
 import com.Dietary_Catering.Starter.DB.ContactForm;
-import com.Dietary_Catering.Starter.DB.Food;
 import com.Dietary_Catering.Starter.DB.Person;
-
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.Collection;
 import java.util.List;
 
 @Repository
+@RequiredArgsConstructor
 public class DbUserRepository implements UserRepository {
 
-    @PersistenceContext
-    EntityManager em;
+    private final EntityManager em;
 
 
     @Transactional
@@ -43,7 +41,6 @@ public class DbUserRepository implements UserRepository {
     @Transactional
     public void updatePerson(Person person) {
         em.merge(person);
-//        em.m
     }
 
     @Transactional
@@ -58,7 +55,6 @@ public class DbUserRepository implements UserRepository {
         return em.createQuery("from Person where login=:login", Person.class).setParameter("login", login).getResultList();
     }
 
-    //do Formularza
     @Transactional
     public void createForm(ContactForm contactForm) {
         em.persist(contactForm);

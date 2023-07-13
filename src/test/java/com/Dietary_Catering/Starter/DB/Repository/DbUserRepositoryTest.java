@@ -58,7 +58,6 @@ class DbUserRepositoryTest {
     void getPersonById() {
         Person person = new Person();
         person = em.createQuery("from Person where id=:id", Person.class).setParameter("id", id).getSingleResult();
-        System.out.println(person);
         assertTrue(person.getId() == 87);
         //assertThat(person).isNotNull();
     }

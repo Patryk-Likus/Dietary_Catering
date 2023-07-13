@@ -1,19 +1,18 @@
 package com.Dietary_Catering.Starter.DB.Repository;
 
-import com.Dietary_Catering.Starter.DB.ContactForm;
 import com.Dietary_Catering.Starter.DB.Food;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import java.util.Collection;
 
 @Repository
+@RequiredArgsConstructor
 public class DbFoodRepository implements FoodRepository {
 
-    @PersistenceContext
-    EntityManager em;
+    private final EntityManager em;
 
     @Override
     public Collection<Food> getAllFoods() {
